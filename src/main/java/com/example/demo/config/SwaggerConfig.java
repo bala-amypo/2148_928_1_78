@@ -1,75 +1,33 @@
-project-root
-│
-├── pom.xml
-│
-├── src
-│   └── main
-│       ├── java
-│       │   └── com
-│       │       └── example
-│       │           └── demo
-│       │
-│       │               ├── DemoApplication.java
-│       │
-│       │               ├── config
-│       │               │   ├── SecurityConfig.java
-│       │               │   └── SwaggerConfig.java
-│       │
-│       │               ├── controller
-│       │               │   ├── AuthController.java
-│       │               │   ├── VolunteerProfileController.java
-│       │               │   ├── VolunteerSkillController.java
-│       │               │   ├── TaskRecordController.java
-│       │               │   ├── TaskAssignmentController.java
-│       │               │   └── AssignmentEvaluationController.java
-│       │
-│       │               ├── dto
-│       │               │   ├── RegisterRequest.java
-│       │               │   ├── AuthRequest.java
-│       │               │   ├── AuthResponse.java
-│       │               │   ├── AvailabilityUpdateRequest.java
-│       │               │   ├── AssignmentStatusUpdateRequest.java
-│       │               │   └── EvaluationRequest.java
-│       │
-│       │               ├── exception
-│       │               │   ├── BadRequestException.java
-│       │               │   ├── ResourceNotFoundException.java
-│       │               │   └── GlobalExceptionHandler.java
-│       │
-│       │               ├── model
-│       │               │   ├── User.java
-│       │               │   ├── VolunteerProfile.java
-│       │               │   ├── VolunteerSkillRecord.java
-│       │               │   ├── TaskRecord.java
-│       │               │   ├── TaskAssignmentRecord.java
-│       │               │   └── AssignmentEvaluationRecord.java
-│       │
-│       │               ├── repository
-│       │               │   ├── UserRepository.java
-│       │               │   ├── VolunteerProfileRepository.java
-│       │               │   ├── VolunteerSkillRecordRepository.java
-│       │               │   ├── TaskRecordRepository.java
-│       │               │   ├── TaskAssignmentRecordRepository.java
-│       │               │   └── AssignmentEvaluationRecordRepository.java
-│       │
-│       │               ├── security
-│       │               │   ├── JwtTokenProvider.java
-│       │               │   ├── JwtAuthenticationFilter.java
-│       │               │   └── CustomUserDetailsService.java
-│       │
-│       │               ├── service
-│       │               │   ├── UserService.java
-│       │               │   ├── VolunteerProfileService.java
-│       │               │   ├── VolunteerSkillService.java
-│       │               │   ├── TaskRecordService.java
-│       │               │   ├── TaskAssignmentService.java
-│       │               │   └── AssignmentEvaluationService.java
-│       │
-│       │               ├── servlet
-│       │               │   └── HelloServlet.java
-│       │
-│       │               └── util
-│       │                   └── SkillLevelUtil.java
-│       │
-│       └── resources
-│           └── application.properties
+package com.example.demo.config;
+
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
+import io.swagger.v3.oas.models.security.SecurityScheme;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class SwaggerConfig {
+
+    @Bean
+    public OpenAPI openAPI() {
+
+        return new OpenAPI()
+                .info(new Info()
+                        .title("Volunteer Skill Matcher API")
+                        .description("Backend API for Volunteer Skill Matcher")
+                        .version("1.0"))
+                .addSecurityItem(new SecurityRequirement().addList("BearerAuth"))
+                .components(
+                        new io.swagger.v3.oas.models.Components()
+                                .addSecuritySchemes("BearerAuth",
+                                        new SecurityScheme()
+                                                .name("BearerAuth")
+                                                .type(SecurityScheme.Type.HTTP)
+                                                .scheme("bearer")
+                                                .bearerFormat("JWT")
+                                )
+                );
+    }
+}
