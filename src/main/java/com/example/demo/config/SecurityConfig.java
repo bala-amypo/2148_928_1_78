@@ -46,3 +46,11 @@ public class SecurityConfig {
         return configuration.getAuthenticationManager();
     }
 }
+
+├── service
+│       │               │   ├── UserService.java
+│       │               │   ├── VolunteerProfileService.java
+│       │               │   ├── VolunteerSkillService.java
+│       │               │   ├── TaskRecordService.java
+│       │               │   ├── TaskAssignmentService.java
+│       │               │   └── AssignmentEvaluationService.java
