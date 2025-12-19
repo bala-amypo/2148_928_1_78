@@ -12,9 +12,3 @@ public class DemoApplication {
 
 }
 
-├── UserServiceImpl.java
-├── VolunteerServiceImpl.java
-├── TaskServiceImpl.java
-├── SkillServiceImpl.java
-├── AssignmentServiceImpl.java
-└── EvaluationServiceImpl.java
