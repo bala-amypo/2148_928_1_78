@@ -24,3 +24,5 @@ public class AuthController {
         return ResponseEntity.ok("Logged in");
     }
 }
+kill -9 67926
+
