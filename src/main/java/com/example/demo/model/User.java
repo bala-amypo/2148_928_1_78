@@ -1,10 +1,5 @@
-package com.example.demo.model;
-
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-
 @Entity
+@Table(name = "app_user") // avoid reserved word
 public class User {
 
     @Id

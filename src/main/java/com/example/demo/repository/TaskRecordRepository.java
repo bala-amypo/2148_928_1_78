@@ -1,12 +1,16 @@
-package com.example.demo.repository;
+@Entity
+public class TaskRecord {
 
-import com.example.demo.model.TaskRecord;
-import org.springframework.data.jpa.repository.JpaRepository;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-import java.util.Optional;
+    private String taskCode; // ✅ add this
+    private String title;
+    private String description;
+    private String requiredSkill;
+    private String requiredLevel;
+    private String status;
 
-public interface TaskRecordRepository
-        extends JpaRepository<TaskRecord, Long> {
-
-    Optional<TaskRecord> findByTaskCode(String taskCode);
+    // getters and setters
 }
