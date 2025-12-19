@@ -1,69 +1,34 @@
 package com.example.demo.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "task_records")
 public class TaskRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String title;
-    private String description;
-    private String requiredSkill;
-    private String requiredLevel;
-    private String status;   // <-- MUST exist
+    private String taskName;
 
-    public Long getId() {
-        return id;
-    }
+    private String status;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    // Constructors
+    public TaskRecord() {}
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getRequiredSkill() {
-        return requiredSkill;
-    }
-
-    public void setRequiredSkill(String requiredSkill) {
-        this.requiredSkill = requiredSkill;
-    }
-
-    public String getRequiredLevel() {
-        return requiredLevel;
-    }
-
-    public void setRequiredLevel(String requiredLevel) {
-        this.requiredLevel = requiredLevel;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    // 🔴 THIS METHOD WAS MISSING
-    public void setStatus(String status) {
+    public TaskRecord(String taskName, String status) {
+        this.taskName = taskName;
         this.status = status;
     }
+
+    // Getters and setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+
+    public String getTaskName() { return taskName; }
+    public void setTaskName(String taskName) { this.taskName = taskName; }
+
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
 }

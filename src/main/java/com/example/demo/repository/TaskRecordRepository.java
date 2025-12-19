@@ -1,16 +1,10 @@
-@Entity
-public class TaskRecord {
+package com.example.demo.repository;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+import com.example.demo.model.TaskRecord;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-    private String taskCode; // ✅ add this
-    private String title;
-    private String description;
-    private String requiredSkill;
-    private String requiredLevel;
-    private String status;
-
-    // getters and setters
+@Repository
+public interface TaskRecordRepository extends JpaRepository<TaskRecord, Long> {
+    // Add custom queries here if needed
 }
