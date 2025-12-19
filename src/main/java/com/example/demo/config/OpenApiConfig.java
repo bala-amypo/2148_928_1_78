@@ -20,3 +20,4 @@ public class OpenApiConfig {
                         .url("https://a7fda69f279b-8405.pro604cr.amypo.ai/proxy/9001/"));
     }
 }
+
