@@ -13,10 +13,3 @@ public interface VolunteerSkillRecordRepository
     List<VolunteerSkillRecord> findBySkillName(String skillName);
 }
 
-├── service
-│       │               │   ├── UserService.java
-│       │               │   ├── VolunteerProfileService.java
-│       │               │   ├── VolunteerSkillService.java
-│       │               │   ├── TaskRecordService.java
-│       │               │   ├── TaskAssignmentService.java
-│       │               │   └── AssignmentEvaluationService.java
