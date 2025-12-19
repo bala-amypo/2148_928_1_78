@@ -1,33 +1,11 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.model.Volunteer;
-import com.example.demo.repository.VolunteerRepository;
-import com.example.demo.service.VolunteerService;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
-public class VolunteerServiceImpl implements VolunteerService {
+public class VolunteerServiceImpl {
 
-    private final VolunteerRepository volunteerRepository;
-
-    public VolunteerServiceImpl(VolunteerRepository volunteerRepository) {
-        this.volunteerRepository = volunteerRepository;
-    }
-
-    @Override
-    public Volunteer saveVolunteer(Volunteer volunteer) {
-        return volunteerRepository.save(volunteer);
-    }
-
-    @Override
-    public List<Volunteer> getAllVolunteers() {
-        return volunteerRepository.findAll();
-    }
-
-    @Override
-    public Volunteer getVolunteerById(Long id) {
-        return volunteerRepository.findById(id).orElse(null);
+    public String registerVolunteer(Long userId) {
+        return "Volunteer registered for user id: " + userId;
     }
 }
