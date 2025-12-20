@@ -22,3 +22,10 @@ public class CorsConfig {
         };
     }
 }
+curl -X POST http://localhost:9001/api/evaluations \
+-H "Content-Type: application/json" \
+-d '{
+  "assignmentId": 999,
+  "feedback": "Good work",
+  "rating": 4
+}'
