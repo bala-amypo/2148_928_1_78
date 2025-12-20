@@ -1,3 +1,5 @@
+package com.example.demo.config;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -11,14 +13,11 @@ public class CorsConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                // Allow all paths
                 registry.addMapping("/**")
-                        // Allow all origins, or replace "*" with Swagger UI origin
-                        .allowedOrigins("*")
-                        // Allow common HTTP methods
+                        .allowedOriginPatterns("*")   // ✅ FIX
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                        // Allow all headers
-                        .allowedHeaders("*");
+                        .allowedHeaders("*")
+                        .allowCredentials(true);
             }
         };
     }
