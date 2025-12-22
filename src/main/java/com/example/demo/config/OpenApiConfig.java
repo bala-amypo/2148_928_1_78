@@ -17,7 +17,7 @@ public class OpenApiConfig {
                         .version("1.0")
                         .description("Backend API for Volunteer Skill Matcher"))
                 .addServersItem(new Server()
-                        .url("https://a7fda69f279b-8405.pro604cr.amypo.ai/proxy/9001/"));
+                        .url("https://9443.pro604cr.amypo.ai/"));
     }
 }
 
