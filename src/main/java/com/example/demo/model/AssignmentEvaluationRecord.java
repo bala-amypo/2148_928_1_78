@@ -9,50 +9,32 @@ public class AssignmentEvaluationRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long assignmentId;
+    @ManyToOne
+    @JoinColumn(name = "assignment_id", nullable = false)
+    private TaskAssignmentRecord assignment;
+
     private String feedback;
     private int rating;
 
-    public AssignmentEvaluationRecord() {
-    }
+    public AssignmentEvaluationRecord() {}
 
-    public AssignmentEvaluationRecord(Long id, Long assignmentId,
+    public AssignmentEvaluationRecord(TaskAssignmentRecord assignment,
                                       String feedback, int rating) {
-        this.id = id;
-        this.assignmentId = assignmentId;
+        this.assignment = assignment;
         this.feedback = feedback;
         this.rating = rating;
     }
 
-    public Long getId() {
-        return id;
+    public Long getId() { return id; }
+
+    public TaskAssignmentRecord getAssignment() { return assignment; }
+    public void setAssignment(TaskAssignmentRecord assignment) {
+        this.assignment = assignment;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public String getFeedback() { return feedback; }
+    public void setFeedback(String feedback) { this.feedback = feedback; }
 
-    public Long getAssignmentId() {
-        return assignmentId;
-    }
-
-    public void setAssignmentId(Long assignmentId) {
-        this.assignmentId = assignmentId;
-    }
-
-    public String getFeedback() {
-        return feedback;
-    }
-
-    public void setFeedback(String feedback) {
-        this.feedback = feedback;
-    }
-
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
+    public int getRating() { return rating; }
+    public void setRating(int rating) { this.rating = rating; }
 }

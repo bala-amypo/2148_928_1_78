@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import java.util.List;
 
 @Entity
 @Table(name = "volunteer_profile")
@@ -19,30 +20,21 @@ public class VolunteerProfile {
 
     private String availabilityStatus;
 
-    public Long getId() {
-        return id;
-    }
+    @OneToMany(mappedBy = "volunteer", cascade = CascadeType.ALL)
+    private List<VolunteerSkillRecord> skills;
 
-    public String getName() {
-        return name;
-    }
+    @OneToMany(mappedBy = "volunteer", cascade = CascadeType.ALL)
+    private List<TaskAssignmentRecord> assignments;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public Long getId() { return id; }
 
-    public String getEmail() {
-        return email;
-    }
-    
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public String getAvailabilityStatus() {
-        return availabilityStatus;
-    }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
 
+    public String getAvailabilityStatus() { return availabilityStatus; }
     public void setAvailabilityStatus(String availabilityStatus) {
         this.availabilityStatus = availabilityStatus;
     }

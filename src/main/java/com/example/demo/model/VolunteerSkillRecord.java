@@ -9,50 +9,32 @@ public class VolunteerSkillRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long volunteerId;
+    @ManyToOne
+    @JoinColumn(name = "volunteer_id", nullable = false)
+    private VolunteerProfile volunteer;
+
     private String skillName;
-    private String skillLevel;
+    private int skillLevel;
 
-    public VolunteerSkillRecord() {
-    }
+    public VolunteerSkillRecord() {}
 
-    public VolunteerSkillRecord(Long id, Long volunteerId,
-                                String skillName, String skillLevel) {
-        this.id = id;
-        this.volunteerId = volunteerId;
+    public VolunteerSkillRecord(VolunteerProfile volunteer,
+                                String skillName, int skillLevel) {
+        this.volunteer = volunteer;
         this.skillName = skillName;
         this.skillLevel = skillLevel;
     }
 
-    public Long getId() {
-        return id;
+    public Long getId() { return id; }
+
+    public VolunteerProfile getVolunteer() { return volunteer; }
+    public void setVolunteer(VolunteerProfile volunteer) {
+        this.volunteer = volunteer;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public String getSkillName() { return skillName; }
+    public void setSkillName(String skillName) { this.skillName = skillName; }
 
-    public Long getVolunteerId() {
-        return volunteerId;
-    }
-
-    public void setVolunteerId(Long volunteerId) {
-        this.volunteerId = volunteerId;
-    }
-
-    public String getSkillName() {
-        return skillName;
-    }
-
-    public void setSkillName(String skillName) {
-        this.skillName = skillName;
-    }
-
-    public String getSkillLevel() {
-        return skillLevel;
-    }
-
-    public void setSkillLevel(String skillLevel) {
-        this.skillLevel = skillLevel;
-    }
+    public int getSkillLevel() { return skillLevel; }
+    public void setSkillLevel(int skillLevel) { this.skillLevel = skillLevel; }
 }
