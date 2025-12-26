@@ -6,7 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.Optional;
 
-public interface VolunteerProfileRepository extends JpaRepository<VolunteerProfile, Long> {
+public interface VolunteerProfileRepository
+        extends JpaRepository<VolunteerProfile, Long> {
 
     boolean existsByVolunteerId(String volunteerId);
 
@@ -16,5 +17,5 @@ public interface VolunteerProfileRepository extends JpaRepository<VolunteerProfi
 
     Optional<VolunteerProfile> findByVolunteerId(String volunteerId);
 
-    List<VolunteerProfile> findByAvailabilityStatus(String availabilityStatus);
+    List<VolunteerProfile> findByAvailabilityStatus(String status);
 }
