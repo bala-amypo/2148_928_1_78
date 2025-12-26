@@ -1,11 +1,13 @@
-package com.example.demo.service.impl;
+package com.example.demo.service;
 
-import org.springframework.stereotype.Service;
+import com.example.demo.model.TaskRecord;
+import java.util.List;
+import java.util.Optional;
 
-@Service
-public class TaskServiceImpl {
-
-    public String createTask(String title) {
-        return "Task created: " + title;
-    }
+public interface TaskRecordService {
+    TaskRecord saveTask(TaskRecord task);
+    TaskRecord updateTask(Long id, TaskRecord task);
+    List<TaskRecord> getOpenTasks();
+    TaskRecord getTaskByCode(String taskCode);
+    Optional<TaskRecord> getTaskById(Long id);
 }
