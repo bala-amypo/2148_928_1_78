@@ -13,7 +13,7 @@ public class VolunteerSkillRecord {
     private Long volunteerId;
     private String skillName;
     private String skillLevel;
-    private boolean certified;
+    private Boolean certified;
 
     private LocalDateTime updatedAt;
 
@@ -23,17 +23,46 @@ public class VolunteerSkillRecord {
         updatedAt = LocalDateTime.now();
     }
 
-    public Long getVolunteerId() { return volunteerId; }
-    public void setVolunteerId(Long volunteerId) { this.volunteerId = volunteerId; }
+    public Long getVolunteerId() {
+        return volunteerId;
+    }
 
-    public String getSkillName() { return skillName; }
-    public void setSkillName(String skillName) { this.skillName = skillName; }
+    public void setVolunteerId(Long volunteerId) {
+        this.volunteerId = volunteerId;
+    }
 
-    public String getSkillLevel() { return skillLevel; }
-    public void setSkillLevel(String skillLevel) { this.skillLevel = skillLevel; }
+    public String getSkillName() {
+        return skillName;
+    }
 
-    public boolean isCertified() { return certified; }
-    public void setCertified(boolean certified) { this.certified = certified; }
+    public void setSkillName(String skillName) {
+        this.skillName = skillName;
+    }
 
-    public LocalDateTime getUpdatedAt() { return updatedAt; }
+    public String getSkillLevel() {
+        return skillLevel;
+    }
+
+    public void setSkillLevel(String skillLevel) {
+        this.skillLevel = skillLevel;
+    }
+
+    // ✅ REQUIRED
+    public Boolean getCertified() {
+        return certified;
+    }
+
+    public void setCertified(Boolean certified) {
+        this.certified = certified;
+    }
+
+    // ✅ REQUIRED
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    // ✅ REQUIRED
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 }

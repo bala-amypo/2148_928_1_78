@@ -1,77 +1,55 @@
-package com.example.demo.service;
+package com.example.demo.service.impl;
 
+import com.example.demo.exception.BadRequestException;
 import com.example.demo.model.AssignmentEvaluationRecord;
 import com.example.demo.repository.AssignmentEvaluationRecordRepository;
 import com.example.demo.repository.TaskAssignmentRecordRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.service.AssignmentEvaluationService;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
-import java.util.Optional;
+import java.util.List;
 
 @Service
-@Transactional
-public class AssignmentEvaluationServiceImpl implements AssignmentEvaluationService {
+public class AssignmentEvaluationServiceImpl
+        implements AssignmentEvaluationService {
 
-    @Autowired
-    private AssignmentEvaluationRecordRepository evaluationRepository;
+    private final AssignmentEvaluationRecordRepository evaluationRepo;
+    private final TaskAssignmentRecordRepository assignmentRepo;
 
-    @Autowired
-    private TaskAssignmentRecordRepository assignmentRepository;
+    public AssignmentEvaluationServiceImpl(
+            AssignmentEvaluationRecordRepository evaluationRepo,
+            TaskAssignmentRecordRepository assignmentRepo) {
 
-    @Override
-    public AssignmentEvaluationRecord evaluateAssignment(Long assignmentId, String feedback) {
-        return evaluateAssignment(assignmentId, feedback, null);
+        this.evaluationRepo = evaluationRepo;
+        this.assignmentRepo = assignmentRepo;
     }
 
     @Override
-    public AssignmentEvaluationRecord evaluateAssignment(Long assignmentId, String feedback, Integer rating) {
-        // Check if assignment exists and is completed
-        if (!assignmentRepository.existsByIdAndStatus(assignmentId, "COMPLETED")) {
-            throw new RuntimeException("Assignment must be completed before evaluation");
+    public AssignmentEvaluationRecord evaluateAssignment(
+            AssignmentEvaluationRecord evaluation) {
+
+        if (!assignmentRepo.existsByIdAndStatus(
+                evaluation.getAssignmentId(), "COMPLETED")) {
+            throw new BadRequestException("Assignment not completed");
         }
 
-        // Check if already evaluated
-        Optional<AssignmentEvaluationRecord> existingEval = 
-            evaluationRepository.findByAssignmentId(assignmentId);
-        
-        AssignmentEvaluationRecord evaluation;
-        if (existingEval.isPresent()) {
-            // Update existing evaluation
-            evaluation = existingEval.get();
-            evaluation.setFeedback(feedback);
-            if (rating != null) {
-                evaluation.setRating(rating);
-            }
-        } else {
-            // Create new evaluation
-            evaluation = new AssignmentEvaluationRecord();
-            evaluation.setAssignmentId(assignmentId);
-            evaluation.setFeedback(feedback);
-            evaluation.setRating(rating != null ? rating : 0);
-        }
-        
-        evaluation.setEvaluatedAt(LocalDateTime.now());
-        return evaluationRepository.save(evaluation);
+        return evaluationRepo.save(evaluation);
     }
 
     @Override
-    public Optional<AssignmentEvaluationRecord> getEvaluationByAssignmentId(Long assignmentId) {
-        return evaluationRepository.findByAssignmentId(assignmentId);
+    public List<AssignmentEvaluationRecord> getEvaluationsByAssignment(
+            Long assignmentId) {
+
+        return evaluationRepo.findByAssignmentId(assignmentId);
     }
 
     @Override
-    public Optional<AssignmentEvaluationRecord> getEvaluationById(Long id) {
-        return evaluationRepository.findById(id);
+    public List<AssignmentEvaluationRecord> getAllEvaluations() {
+        return evaluationRepo.findAll();
     }
 
     @Override
-    public boolean deleteEvaluation(Long id) {
-        if (evaluationRepository.existsById(id)) {
-            evaluationRepository.deleteById(id);
-            return true;
-        }
-        return false;
+    public void deleteEvaluation(Long id) {
+        evaluationRepo.deleteById(id);
     }
 }
