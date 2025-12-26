@@ -38,20 +38,14 @@ public class VolunteerProfileServiceImpl implements VolunteerProfileService {
     }
 
     @Override
-    public VolunteerProfile updateAvailability(Long id, String availabilityStatus) {
-        VolunteerProfile volunteer = repository.findById(id)
-                .orElseThrow(() ->
-                        new ResourceNotFoundException("Volunteer not found with id: " + id));
-
-        volunteer.setAvailabilityStatus(availabilityStatus);
-        return repository.save(volunteer);
+    public VolunteerProfile getVolunteerById(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Volunteer not found"));
     }
 
     @Override
-    public VolunteerProfile getVolunteerById(Long id) {
-        return repository.findById(id)
-                .orElseThrow(() ->
-                        new ResourceNotFoundException("Volunteer not found with id: " + id));
+    public Optional<VolunteerProfile> findByVolunteerId(String volunteerId) {
+        return repository.findByVolunteerId(volunteerId);
     }
 
     @Override
@@ -60,7 +54,9 @@ public class VolunteerProfileServiceImpl implements VolunteerProfileService {
     }
 
     @Override
-    public Optional<VolunteerProfile> findByVolunteerId(String volunteerId) {
-        return repository.findByVolunteerId(volunteerId);
+    public VolunteerProfile updateAvailability(Long id, String availabilityStatus) {
+        VolunteerProfile volunteer = getVolunteerById(id);
+        volunteer.setAvailabilityStatus(availabilityStatus);
+        return repository.save(volunteer);
     }
 }
