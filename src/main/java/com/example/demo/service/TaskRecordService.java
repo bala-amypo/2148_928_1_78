@@ -1,23 +1,17 @@
 package com.example.demo.service;
 
 import com.example.demo.model.TaskRecord;
-import com.example.demo.repository.TaskRecordRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
+import java.util.Optional;
 
-@Service
-public class TaskRecordService {
-
-    @Autowired
-    private TaskRecordRepository taskRecordRepository;
-
-    public TaskRecord createTask(TaskRecord task) {
-        return taskRecordRepository.save(task);
-    }
-
-    public List<TaskRecord> getAllTasks() {
-        return taskRecordRepository.findAll();
-    }
+public interface TaskRecordService {
+    TaskRecord saveTask(TaskRecord task);
+    TaskRecord updateTask(Long id, TaskRecord task);
+    List<TaskRecord> getAllTasks();
+    Optional<TaskRecord> getTaskById(Long id);
+    TaskRecord getTaskByCode(String taskCode);
+    List<TaskRecord> getOpenTasks();
+    boolean deleteTask(Long id);
+    List<TaskRecord> getTasksBySkill(String skill);
+    List<TaskRecord> getTasksBySkillAndLevel(String skill, String level);
 }
