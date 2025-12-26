@@ -1,18 +1,44 @@
 package com.example.demo.service;
 
 import com.example.demo.model.TaskAssignmentRecord;
+import com.example.demo.model.TaskRecord;
+import com.example.demo.repository.TaskAssignmentRecordRepository;
+import com.example.demo.repository.TaskRecordRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public interface TaskAssignmentService {
+@Service
+public class TaskAssignmentService {
 
-    TaskAssignmentRecord assignTask(Long taskId);
+    private final TaskAssignmentRecordRepository assignmentRepo;
+    private final TaskRecordRepository taskRepo;
 
-    TaskAssignmentRecord updateAssignmentStatus(Long id, String status);
+    public TaskAssignmentService(TaskAssignmentRecordRepository assignmentRepo,
+                                 TaskRecordRepository taskRepo) {
+        this.assignmentRepo = assignmentRepo;
+        this.taskRepo = taskRepo;
+    }
 
-    List<TaskAssignmentRecord> getAssignmentsByVolunteer(Long volunteerId);
+    public TaskAssignmentRecord assignTask(Long taskId, Long volunteerId) {
+        TaskRecord task = taskRepo.findById(taskId)
+                .orElseThrow(() -> new RuntimeException("Task not found"));
 
-    List<TaskAssignmentRecord> getAssignmentsByTask(Long taskId);
+        task.setStatus("ASSIGNED");
+        taskRepo.save(task);
 
-    List<TaskAssignmentRecord> getAllAssignments();
+        TaskAssignmentRecord record = new TaskAssignmentRecord();
+        record.setTaskId(taskId);
+        record.setVolunteerId(volunteerId);
+
+        return assignmentRepo.save(record);
+    }
+
+    public List<TaskAssignmentRecord> getAssignmentsByVolunteer(Long volunteerId) {
+        return assignmentRepo.findByVolunteerId(volunteerId);
+    }
+
+    public List<TaskAssignmentRecord> getAssignmentsByTask(Long taskId) {
+        return assignmentRepo.findByTaskId(taskId);
+    }
 }

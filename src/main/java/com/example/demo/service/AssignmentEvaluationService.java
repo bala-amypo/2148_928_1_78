@@ -1,12 +1,25 @@
 package com.example.demo.service;
 
 import com.example.demo.model.AssignmentEvaluationRecord;
-import java.util.Optional;
+import com.example.demo.repository.AssignmentEvaluationRecordRepository;
+import org.springframework.stereotype.Service;
 
-public interface AssignmentEvaluationService {
-    AssignmentEvaluationRecord evaluateAssignment(Long assignmentId, String feedback);
-    AssignmentEvaluationRecord evaluateAssignment(Long assignmentId, String feedback, Integer rating);
-    Optional<AssignmentEvaluationRecord> getEvaluationByAssignmentId(Long assignmentId);
-    Optional<AssignmentEvaluationRecord> getEvaluationById(Long id);
-    boolean deleteEvaluation(Long id);
+import java.util.List;
+
+@Service
+public class AssignmentEvaluationService {
+
+    private final AssignmentEvaluationRecordRepository repository;
+
+    public AssignmentEvaluationService(AssignmentEvaluationRecordRepository repository) {
+        this.repository = repository;
+    }
+
+    public AssignmentEvaluationRecord submitEvaluation(AssignmentEvaluationRecord record) {
+        return repository.save(record);
+    }
+
+    public List<AssignmentEvaluationRecord> getEvaluations(Long assignmentId) {
+        return repository.findByAssignmentId(assignmentId);
+    }
 }

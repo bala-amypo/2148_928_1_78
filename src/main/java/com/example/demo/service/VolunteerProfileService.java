@@ -1,19 +1,28 @@
 package com.example.demo.service;
 
 import com.example.demo.model.VolunteerProfile;
+import com.example.demo.repository.VolunteerProfileRepository;
+import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
-public interface VolunteerProfileService {
+@Service
+public class VolunteerProfileService {
 
-    VolunteerProfile createVolunteer(VolunteerProfile volunteer);
+    private final VolunteerProfileRepository repository;
 
-    VolunteerProfile getVolunteerById(Long id);
+    public VolunteerProfileService(VolunteerProfileRepository repository) {
+        this.repository = repository;
+    }
 
-    Optional<VolunteerProfile> findByVolunteerId(String volunteerId);
+    public VolunteerProfile createProfile(VolunteerProfile profile) {
+        if (profile.getAvailabilityStatus() == null) {
+            profile.setAvailabilityStatus("AVAILABLE");
+        }
+        return repository.save(profile);
+    }
 
-    List<VolunteerProfile> getAllVolunteers();
-
-    VolunteerProfile updateAvailability(Long id, String availabilityStatus);
+    public Optional<VolunteerProfile> getByVolunteerId(String volunteerId) {
+        return repository.findByVolunteerId(volunteerId);
+    }
 }
