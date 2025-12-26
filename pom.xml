@@ -76,7 +76,7 @@
             <version>2.2.0</version>
         </dependency>
 
-        <!-- Lombok (optional, for easier code) -->
+        <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -84,8 +84,15 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Testing Dependencies -->
+        <!-- Servlet API -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.0.0</version>
+            <scope>provided</scope>
+        </dependency>
 
+        <!-- Testing Dependencies -->
         <!-- Mockito -->
         <dependency>
             <groupId>org.mockito</groupId>
@@ -114,7 +121,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        
     </dependencies>
 
     <build>
@@ -135,7 +141,6 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
 
