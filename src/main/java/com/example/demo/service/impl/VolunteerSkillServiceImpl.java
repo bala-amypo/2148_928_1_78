@@ -35,24 +35,27 @@ public class VolunteerSkillServiceImpl implements VolunteerSkillService {
     }
 
     @Override
-    public Optional<VolunteerSkillRecord> getSkillById(Long id) {
-        return repository.findById(id);
-    }
-
-    @Override
-    public List<VolunteerSkillRecord> getSkillsByVolunteer(Long volunteerId) {
+    public List<VolunteerSkillRecord> getSkillsByVolunteerId(Long volunteerId) {
         return repository.findByVolunteerId(volunteerId);
     }
 
     @Override
-    public List<VolunteerSkillRecord> getAllSkills() {
-        return repository.findAll();
+    public List<VolunteerSkillRecord> getVolunteersBySkill(String skillName) {
+        return repository.findBySkillName(skillName);
     }
 
-    // 🔴 REQUIRED BY INTERFACE
+    @Override
+    public List<VolunteerSkillRecord> getVolunteersBySkillAndLevel(
+            String skillName, Integer minLevel) {
+
+        return repository.findBySkillNameAndSkillLevelGreaterThanEqual(
+                skillName, minLevel);
+    }
+
     @Override
     public List<VolunteerSkillRecord> getCertifiedVolunteersBySkill(
             String skillName) {
+
         return repository.findBySkillNameAndCertifiedTrue(skillName);
     }
 
@@ -63,5 +66,10 @@ public class VolunteerSkillServiceImpl implements VolunteerSkillService {
         }
         repository.deleteById(id);
         return true;
+    }
+
+    @Override
+    public Optional<VolunteerSkillRecord> getSkillById(Long id) {
+        return repository.findById(id);
     }
 }

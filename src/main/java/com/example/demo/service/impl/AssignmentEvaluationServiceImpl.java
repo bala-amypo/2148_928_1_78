@@ -7,58 +7,62 @@ import com.example.demo.repository.TaskAssignmentRecordRepository;
 import com.example.demo.service.AssignmentEvaluationService;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
-public class AssignmentEvaluationServiceImpl
-        implements AssignmentEvaluationService {
+public class AssignmentEvaluationServiceImpl implements AssignmentEvaluationService {
 
-    private final AssignmentEvaluationRecordRepository evaluationRepo;
-    private final TaskAssignmentRecordRepository assignmentRepo;
+    private final AssignmentEvaluationRecordRepository evaluationRepository;
+    private final TaskAssignmentRecordRepository assignmentRepository;
 
     public AssignmentEvaluationServiceImpl(
-            AssignmentEvaluationRecordRepository evaluationRepo,
-            TaskAssignmentRecordRepository assignmentRepo) {
-        this.evaluationRepo = evaluationRepo;
-        this.assignmentRepo = assignmentRepo;
+            AssignmentEvaluationRecordRepository evaluationRepository,
+            TaskAssignmentRecordRepository assignmentRepository) {
+        this.evaluationRepository = evaluationRepository;
+        this.assignmentRepository = assignmentRepository;
     }
 
     @Override
     public AssignmentEvaluationRecord evaluateAssignment(
-            AssignmentEvaluationRecord evaluation) {
+            Long assignmentId, String feedback) {
 
-        if (!assignmentRepo.existsByIdAndStatus(
-                evaluation.getAssignmentId(), "COMPLETED")) {
+        return evaluateAssignment(assignmentId, feedback, null);
+    }
+
+    @Override
+    public AssignmentEvaluationRecord evaluateAssignment(
+            Long assignmentId, String feedback, Integer rating) {
+
+        if (!assignmentRepository.existsByIdAndStatus(assignmentId, "COMPLETED")) {
             throw new BadRequestException("Assignment not completed");
         }
 
-        return evaluationRepo.save(evaluation);
+        AssignmentEvaluationRecord record = new AssignmentEvaluationRecord();
+        record.setAssignmentId(assignmentId);
+        record.setFeedback(feedback);
+        record.setRating(rating);
+
+        return evaluationRepository.save(record);
+    }
+
+    @Override
+    public Optional<AssignmentEvaluationRecord> getEvaluationByAssignmentId(
+            Long assignmentId) {
+
+        return evaluationRepository.findByAssignmentId(assignmentId);
     }
 
     @Override
     public Optional<AssignmentEvaluationRecord> getEvaluationById(Long id) {
-        return evaluationRepo.findById(id);
-    }
-
-    // 🔴 REQUIRED BY INTERFACE (NAME MUST MATCH EXACTLY)
-    @Override
-    public List<AssignmentEvaluationRecord> getEvaluationByAssignmentId(
-            Long assignmentId) {
-        return evaluationRepo.findByAssignmentId(assignmentId);
-    }
-
-    @Override
-    public List<AssignmentEvaluationRecord> getAllEvaluations() {
-        return evaluationRepo.findAll();
+        return evaluationRepository.findById(id);
     }
 
     @Override
     public boolean deleteEvaluation(Long id) {
-        if (!evaluationRepo.existsById(id)) {
+        if (!evaluationRepository.existsById(id)) {
             return false;
         }
-        evaluationRepo.deleteById(id);
+        evaluationRepository.deleteById(id);
         return true;
     }
 }
