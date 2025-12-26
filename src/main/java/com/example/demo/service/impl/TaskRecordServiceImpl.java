@@ -19,33 +19,12 @@ public class TaskRecordServiceImpl implements TaskRecordService {
 
     @Override
     public TaskRecord createTask(TaskRecord task) {
-        if (task.getStatus() == null) {
-            task.setStatus("OPEN");
-        }
         return repository.save(task);
     }
 
     @Override
-    public TaskRecord updateTask(Long id, TaskRecord updated) {
-        TaskRecord existing = repository.findById(id).orElseThrow();
-
-        existing.setTaskName(updated.getTaskName());
-        existing.setRequiredSkill(updated.getRequiredSkill());
-        existing.setRequiredSkillLevel(updated.getRequiredSkillLevel());
-        existing.setPriority(updated.getPriority());
-        existing.setStatus(updated.getStatus());
-
-        return repository.save(existing);
-    }
-
-    @Override
-    public TaskRecord getTask(Long id) {
-        return repository.findById(id).orElseThrow();
-    }
-
-    @Override
-    public Optional<TaskRecord> getTaskByCode(String code) {
-        return repository.findByTaskCode(code);
+    public Optional<TaskRecord> getTaskById(Long id) {
+        return repository.findById(id);
     }
 
     @Override
@@ -54,7 +33,18 @@ public class TaskRecordServiceImpl implements TaskRecordService {
     }
 
     @Override
-    public List<TaskRecord> getOpenTasks() {
-        return repository.findByStatus("OPEN");
+    public List<TaskRecord> getTasksByStatus(String status) {
+        return repository.findByStatus(status);
+    }
+
+    @Override
+    public TaskRecord updateTask(Long id, TaskRecord updatedTask) {
+        updatedTask.setId(id);
+        return repository.save(updatedTask);
+    }
+
+    @Override
+    public void deleteTask(Long id) {
+        repository.deleteById(id);
     }
 }

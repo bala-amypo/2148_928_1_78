@@ -19,19 +19,14 @@ public class VolunteerSkillServiceImpl implements VolunteerSkillService {
     }
 
     @Override
-    public VolunteerSkillRecord addOrUpdateSkill(VolunteerSkillRecord skill) {
+    public VolunteerSkillRecord addSkill(VolunteerSkillRecord skill) {
+        skill.setUpdatedAt(LocalDateTime.now());
+        return repository.save(skill);
+    }
 
-        VolunteerSkillRecord existing =
-                repository.findByVolunteerIdAndSkillName(
-                                skill.getVolunteerId(),
-                                skill.getSkillName())
-                        .orElse(skill);
-
-        existing.setSkillLevel(skill.getSkillLevel());
-        existing.setCertified(skill.getCertified());
-        existing.setUpdatedAt(LocalDateTime.now());
-
-        return repository.save(existing);
+    @Override
+    public Optional<VolunteerSkillRecord> getSkillById(Long id) {
+        return repository.findById(id);
     }
 
     @Override
@@ -40,36 +35,29 @@ public class VolunteerSkillServiceImpl implements VolunteerSkillService {
     }
 
     @Override
-    public List<VolunteerSkillRecord> getVolunteersBySkill(String skillName) {
+    public List<VolunteerSkillRecord> getSkillsBySkillName(String skillName) {
         return repository.findBySkillName(skillName);
     }
 
     @Override
-    public List<VolunteerSkillRecord> getVolunteersBySkillAndLevel(
-            String skillName, Integer minLevel) {
-
-        return repository.findBySkillNameAndSkillLevelGreaterThanEqual(
-                skillName, minLevel);
+    public List<VolunteerSkillRecord> getSkillsBySkillNameAndMinLevel(String skillName, Integer minLevel) {
+        return repository.findBySkillNameAndSkillLevelGreaterThanEqual(skillName, minLevel);
     }
 
     @Override
-    public List<VolunteerSkillRecord> getCertifiedVolunteersBySkill(
-            String skillName) {
-
+    public List<VolunteerSkillRecord> getCertifiedSkillsBySkillName(String skillName) {
         return repository.findBySkillNameAndCertifiedTrue(skillName);
     }
 
     @Override
-    public boolean deleteSkill(Long id) {
-        if (!repository.existsById(id)) {
-            return false;
-        }
-        repository.deleteById(id);
-        return true;
+    public VolunteerSkillRecord updateSkill(Long id, VolunteerSkillRecord skill) {
+        skill.setId(id);
+        skill.setUpdatedAt(LocalDateTime.now());
+        return repository.save(skill);
     }
 
     @Override
-    public Optional<VolunteerSkillRecord> getSkillById(Long id) {
-        return repository.findById(id);
+    public void deleteSkill(Long id) {
+        repository.deleteById(id);
     }
 }

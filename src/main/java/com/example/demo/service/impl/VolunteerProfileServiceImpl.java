@@ -1,6 +1,5 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.exception.BadRequestException;
 import com.example.demo.model.VolunteerProfile;
 import com.example.demo.repository.VolunteerProfileRepository;
 import com.example.demo.service.VolunteerProfileService;
@@ -19,41 +18,33 @@ public class VolunteerProfileServiceImpl implements VolunteerProfileService {
     }
 
     @Override
-    public VolunteerProfile createVolunteer(VolunteerProfile volunteer) {
-
-        if (repository.existsByVolunteerId(volunteer.getVolunteerId())) {
-            throw new BadRequestException("Volunteer ID already exists");
-        }
-        if (repository.existsByEmail(volunteer.getEmail())) {
-            throw new BadRequestException("Email already exists");
-        }
-        if (repository.existsByPhone(volunteer.getPhone())) {
-            throw new BadRequestException("Phone already exists");
-        }
-
-        return repository.save(volunteer);
+    public VolunteerProfile createVolunteerProfile(VolunteerProfile profile) {
+        return repository.save(profile);
     }
 
     @Override
-    public VolunteerProfile updateAvailability(Long id, String availabilityStatus) {
-        VolunteerProfile v = getVolunteerById(id);
-        v.setAvailabilityStatus(availabilityStatus);
-        return repository.save(v);
+    public Optional<VolunteerProfile> getVolunteerProfileById(Long id) {
+        return repository.findById(id);
     }
 
     @Override
-    public VolunteerProfile getVolunteerById(Long id) {
-        return repository.findById(id)
-                .orElseThrow(() -> new BadRequestException("Volunteer not found"));
-    }
-
-    @Override
-    public List<VolunteerProfile> getAllVolunteers() {
-        return repository.findAll();
-    }
-
-    @Override
-    public Optional<VolunteerProfile> findByVolunteerId(String volunteerId) {
+    public Optional<VolunteerProfile> getVolunteerProfileByVolunteerId(String volunteerId) {
         return repository.findByVolunteerId(volunteerId);
+    }
+
+    @Override
+    public List<VolunteerProfile> getVolunteersByAvailabilityStatus(String status) {
+        return repository.findByAvailabilityStatus(status);
+    }
+
+    @Override
+    public VolunteerProfile updateVolunteerProfile(Long id, VolunteerProfile updatedProfile) {
+        updatedProfile.setId(id);
+        return repository.save(updatedProfile);
+    }
+
+    @Override
+    public void deleteVolunteerProfile(Long id) {
+        repository.deleteById(id);
     }
 }

@@ -1,68 +1,45 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.exception.BadRequestException;
 import com.example.demo.model.AssignmentEvaluationRecord;
 import com.example.demo.repository.AssignmentEvaluationRecordRepository;
-import com.example.demo.repository.TaskAssignmentRecordRepository;
 import com.example.demo.service.AssignmentEvaluationService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class AssignmentEvaluationServiceImpl implements AssignmentEvaluationService {
 
-    private final AssignmentEvaluationRecordRepository evaluationRepository;
-    private final TaskAssignmentRecordRepository assignmentRepository;
+    private final AssignmentEvaluationRecordRepository repository;
 
-    public AssignmentEvaluationServiceImpl(
-            AssignmentEvaluationRecordRepository evaluationRepository,
-            TaskAssignmentRecordRepository assignmentRepository) {
-        this.evaluationRepository = evaluationRepository;
-        this.assignmentRepository = assignmentRepository;
+    public AssignmentEvaluationServiceImpl(AssignmentEvaluationRecordRepository repository) {
+        this.repository = repository;
     }
 
     @Override
-    public AssignmentEvaluationRecord evaluateAssignment(
-            Long assignmentId, String feedback) {
-
-        return evaluateAssignment(assignmentId, feedback, null);
-    }
-
-    @Override
-    public AssignmentEvaluationRecord evaluateAssignment(
-            Long assignmentId, String feedback, Integer rating) {
-
-        if (!assignmentRepository.existsByIdAndStatus(assignmentId, "COMPLETED")) {
-            throw new BadRequestException("Assignment not completed");
-        }
-
-        AssignmentEvaluationRecord record = new AssignmentEvaluationRecord();
-        record.setAssignmentId(assignmentId);
-        record.setFeedback(feedback);
-        record.setRating(rating);
-
-        return evaluationRepository.save(record);
-    }
-
-    @Override
-    public Optional<AssignmentEvaluationRecord> getEvaluationByAssignmentId(
-            Long assignmentId) {
-
-        return evaluationRepository.findByAssignmentId(assignmentId);
+    public AssignmentEvaluationRecord evaluateAssignment(AssignmentEvaluationRecord evaluation) {
+        return repository.save(evaluation);
     }
 
     @Override
     public Optional<AssignmentEvaluationRecord> getEvaluationById(Long id) {
-        return evaluationRepository.findById(id);
+        return repository.findById(id);
     }
 
     @Override
-    public boolean deleteEvaluation(Long id) {
-        if (!evaluationRepository.existsById(id)) {
-            return false;
-        }
-        evaluationRepository.deleteById(id);
-        return true;
+    public List<AssignmentEvaluationRecord> getEvaluationsByAssignmentId(Long assignmentId) {
+        return repository.findByAssignmentId(assignmentId);
+    }
+
+    @Override
+    public AssignmentEvaluationRecord updateEvaluation(Long id, AssignmentEvaluationRecord evaluation) {
+        evaluation.setId(id);
+        return repository.save(evaluation);
+    }
+
+    @Override
+    public void deleteEvaluation(Long id) {
+        repository.deleteById(id);
     }
 }

@@ -1,86 +1,55 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.exception.BadRequestException;
-import com.example.demo.model.*;
-import com.example.demo.repository.*;
+import com.example.demo.model.TaskAssignmentRecord;
+import com.example.demo.repository.TaskAssignmentRecordRepository;
+import com.example.demo.repository.VolunteerProfileRepository;
 import com.example.demo.service.TaskAssignmentService;
-import com.example.demo.util.SkillLevelUtil;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TaskAssignmentServiceImpl implements TaskAssignmentService {
 
     private final TaskAssignmentRecordRepository assignmentRepo;
-    private final TaskRecordRepository taskRepo;
     private final VolunteerProfileRepository volunteerRepo;
-    private final VolunteerSkillRecordRepository skillRepo;
 
     public TaskAssignmentServiceImpl(
             TaskAssignmentRecordRepository assignmentRepo,
-            TaskRecordRepository taskRepo,
-            VolunteerProfileRepository volunteerRepo,
-            VolunteerSkillRecordRepository skillRepo) {
-
+            VolunteerProfileRepository volunteerRepo
+    ) {
         this.assignmentRepo = assignmentRepo;
-        this.taskRepo = taskRepo;
         this.volunteerRepo = volunteerRepo;
-        this.skillRepo = skillRepo;
     }
 
     @Override
-    public TaskAssignmentRecord assignTask(Long taskId) {
-
-        TaskRecord task = taskRepo.findById(taskId).orElseThrow();
-
-        if (assignmentRepo.existsByTaskIdAndStatus(taskId, "ACTIVE")) {
-            throw new BadRequestException("ACTIVE assignment");
-        }
-
-        List<VolunteerProfile> volunteers =
-                volunteerRepo.findByAvailabilityStatus("AVAILABLE");
-
-        if (volunteers.isEmpty()) {
-            throw new BadRequestException("No AVAILABLE volunteers");
-        }
-
-        for (VolunteerProfile v : volunteers) {
-            for (VolunteerSkillRecord s : skillRepo.findByVolunteerId(v.getId())) {
-
-                if (s.getSkillName().equals(task.getRequiredSkill())) {
-                    int vRank = SkillLevelUtil.levelRank(s.getSkillLevel());
-                    int tRank = SkillLevelUtil.levelRank(task.getRequiredSkillLevel());
-
-                    if (vRank >= tRank) {
-                        TaskAssignmentRecord ar = new TaskAssignmentRecord();
-                        ar.setTaskId(taskId);
-                        ar.setVolunteerId(v.getId());
-                        ar.setStatus("ACTIVE");
-                        return assignmentRepo.save(ar);
-                    }
-                }
-            }
-        }
-        throw new BadRequestException("required skill level");
+    public TaskAssignmentRecord assignTaskToVolunteer(Long taskId) {
+        TaskAssignmentRecord record = new TaskAssignmentRecord();
+        record.setTaskId(taskId);
+        record.setStatus("ASSIGNED");
+        return assignmentRepo.save(record);
     }
 
-    public List<TaskAssignmentRecord> getAssignmentsByVolunteer(Long id) {
-        return assignmentRepo.findByVolunteerId(id);
+    @Override
+    public Optional<TaskAssignmentRecord> getAssignmentById(Long id) {
+        return assignmentRepo.findById(id);
     }
 
-    public List<TaskAssignmentRecord> getAssignmentsByTask(Long id) {
-        return assignmentRepo.findByTaskId(id);
-    }
-
+    @Override
     public List<TaskAssignmentRecord> getAllAssignments() {
         return assignmentRepo.findAll();
     }
+
     @Override
-    public TaskAssignmentRecord updateAssignmentStatus(Long id, String status) {
-        TaskAssignmentRecord ar = assignmentRepo.findById(id).orElseThrow();
-        ar.setStatus(status);
-        return assignmentRepo.save(ar);
+    public List<TaskAssignmentRecord> getAssignmentsByTaskId(Long taskId) {
+        return assignmentRepo.findByTaskId(taskId);
     }
 
+    @Override
+    public TaskAssignmentRecord updateAssignmentStatus(Long id, String status) {
+        TaskAssignmentRecord record = assignmentRepo.findById(id).orElseThrow();
+        record.setStatus(status);
+        return assignmentRepo.save(record);
+    }
 }
