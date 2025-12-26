@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class VolunteerSkillServiceImpl implements VolunteerSkillService {
@@ -34,8 +35,8 @@ public class VolunteerSkillServiceImpl implements VolunteerSkillService {
     }
 
     @Override
-    public VolunteerSkillRecord getSkillById(Long id) {
-        return repository.findById(id).orElseThrow();
+    public Optional<VolunteerSkillRecord> getSkillById(Long id) {
+        return repository.findById(id);
     }
 
     @Override
@@ -46,5 +47,14 @@ public class VolunteerSkillServiceImpl implements VolunteerSkillService {
     @Override
     public List<VolunteerSkillRecord> getAllSkills() {
         return repository.findAll();
+    }
+
+    @Override
+    public boolean deleteSkill(Long id) {
+        if (!repository.existsById(id)) {
+            return false;
+        }
+        repository.deleteById(id);
+        return true;
     }
 }

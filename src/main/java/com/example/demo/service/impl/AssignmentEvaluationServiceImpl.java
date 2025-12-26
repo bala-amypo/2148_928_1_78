@@ -8,6 +8,7 @@ import com.example.demo.service.AssignmentEvaluationService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AssignmentEvaluationServiceImpl
@@ -19,7 +20,6 @@ public class AssignmentEvaluationServiceImpl
     public AssignmentEvaluationServiceImpl(
             AssignmentEvaluationRecordRepository evaluationRepo,
             TaskAssignmentRecordRepository assignmentRepo) {
-
         this.evaluationRepo = evaluationRepo;
         this.assignmentRepo = assignmentRepo;
     }
@@ -37,9 +37,13 @@ public class AssignmentEvaluationServiceImpl
     }
 
     @Override
+    public Optional<AssignmentEvaluationRecord> getEvaluationById(Long id) {
+        return evaluationRepo.findById(id);
+    }
+
+    @Override
     public List<AssignmentEvaluationRecord> getEvaluationsByAssignment(
             Long assignmentId) {
-
         return evaluationRepo.findByAssignmentId(assignmentId);
     }
 
@@ -49,7 +53,11 @@ public class AssignmentEvaluationServiceImpl
     }
 
     @Override
-    public void deleteEvaluation(Long id) {
+    public boolean deleteEvaluation(Long id) {
+        if (!evaluationRepo.existsById(id)) {
+            return false;
+        }
         evaluationRepo.deleteById(id);
+        return true;
     }
 }
