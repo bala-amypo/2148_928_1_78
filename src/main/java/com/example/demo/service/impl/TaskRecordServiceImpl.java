@@ -20,7 +20,7 @@ public class TaskRecordServiceImpl implements TaskRecordService {
     @Override
     public TaskRecord createTask(TaskRecord task) {
         if (task.getStatus() == null) {
-            task.setStatus("OPEN"); // required by test #26
+            task.setStatus("OPEN"); // required by tests
         }
         return repository.save(task);
     }

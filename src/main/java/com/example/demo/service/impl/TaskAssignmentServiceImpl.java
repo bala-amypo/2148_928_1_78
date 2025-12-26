@@ -51,10 +51,17 @@ public class TaskAssignmentServiceImpl implements TaskAssignmentService {
                     skillRepo.findByVolunteerId(v.getId());
 
             for (VolunteerSkillRecord s : skills) {
+
                 if (s.getSkillName().equals(task.getRequiredSkill())) {
 
-                    int vRank = SkillLevelUtil.levelRank(s.getSkillLevel());
-                    int tRank = SkillLevelUtil.levelRank(task.getRequiredSkillLevel());
+                    int vRank =
+                            SkillLevelUtil.levelRank(s.getSkillLevel());
+
+                    // 🔴 FIX: Integer → String safe conversion
+                    int tRank =
+                            SkillLevelUtil.levelRank(
+                                    String.valueOf(task.getRequiredSkillLevel())
+                            );
 
                     if (vRank >= tRank) {
                         TaskAssignmentRecord ar = new TaskAssignmentRecord();
