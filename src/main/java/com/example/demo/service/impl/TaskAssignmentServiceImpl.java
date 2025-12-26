@@ -76,4 +76,11 @@ public class TaskAssignmentServiceImpl implements TaskAssignmentService {
     public List<TaskAssignmentRecord> getAllAssignments() {
         return assignmentRepo.findAll();
     }
+    @Override
+    public TaskAssignmentRecord updateAssignmentStatus(Long id, String status) {
+        TaskAssignmentRecord ar = assignmentRepo.findById(id).orElseThrow();
+        ar.setStatus(status);
+        return assignmentRepo.save(ar);
+    }
+
 }

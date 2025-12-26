@@ -10,6 +10,9 @@ public interface TaskAssignmentRecordRepository
 
     boolean existsByTaskIdAndStatus(Long taskId, String status);
 
+    // ✅ REQUIRED
+    boolean existsByIdAndStatus(Long id, String status);
+
     List<TaskAssignmentRecord> findByVolunteerId(Long volunteerId);
 
     List<TaskAssignmentRecord> findByTaskId(Long taskId);
