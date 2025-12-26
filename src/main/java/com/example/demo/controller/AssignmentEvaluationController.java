@@ -1,36 +1,31 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.AssignmentEvaluationRecord;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
+import com.example.demo.service.AssignmentEvaluationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/evaluations")
-@Tag(name = "Assignment Evaluation", description = "Operations for submitting evaluations")
+@RequestMapping("/evaluations")
 public class AssignmentEvaluationController {
 
+    private final AssignmentEvaluationService service;
+
+    public AssignmentEvaluationController(AssignmentEvaluationService service) {
+        this.service = service;
+    }
+
     @PostMapping
-    @Operation(summary = "Submit evaluation for an assignment")
-    public ResponseEntity<AssignmentEvaluationRecord> submitEvaluation(@RequestBody AssignmentEvaluationRecord evaluation) {
-        // TODO: implement submit evaluation
-        return ResponseEntity.ok(evaluation);
+    public ResponseEntity<AssignmentEvaluationRecord> submit(
+            @RequestBody AssignmentEvaluationRecord record) {
+        return ResponseEntity.ok(service.submitEvaluation(record));
     }
 
-    @GetMapping("/assignment/{assignmentId}")
-    @Operation(summary = "Get evaluation by assignment")
-    public ResponseEntity<AssignmentEvaluationRecord> getByAssignment(@PathVariable Long assignmentId) {
-        // TODO: implement get by assignment
-        return ResponseEntity.ok(new AssignmentEvaluationRecord());
-    }
-
-    @GetMapping
-    @Operation(summary = "List all evaluations")
-    public ResponseEntity<List<AssignmentEvaluationRecord>> listAll() {
-        // TODO: implement list all
-        return ResponseEntity.ok(List.of());
+    @GetMapping("/{assignmentId}")
+    public ResponseEntity<List<AssignmentEvaluationRecord>> get(
+            @PathVariable Long assignmentId) {
+        return ResponseEntity.ok(service.getEvaluations(assignmentId));
     }
 }

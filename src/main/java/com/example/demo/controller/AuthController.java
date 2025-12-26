@@ -1,29 +1,36 @@
 package com.example.demo.controller;
 
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/auth")
-@Tag(name = "Authentication", description = "User registration and login")
 public class AuthController {
 
-    @PostMapping("/register")
-    @Operation(summary = "Register a new user")
-    public ResponseEntity<String> register(@RequestBody Object user) {
-        // TODO: implement register
-        return ResponseEntity.ok("Registered");
+    @PostMapping("/login")
+    public ResponseEntity<Map<String, String>> login(
+            @RequestParam String username,
+            @RequestParam String password) {
+
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Login successful");
+        response.put("username", username);
+
+        return ResponseEntity.ok(response);
     }
 
-    @PostMapping("/login")
-    @Operation(summary = "User login")
-    public ResponseEntity<String> login(@RequestBody Object loginRequest) {
-        // TODO: implement login
-        return ResponseEntity.ok("Logged in");
+    @PostMapping("/register")
+    public ResponseEntity<Map<String, String>> register(
+            @RequestParam String username,
+            @RequestParam String password) {
+
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "User registered successfully");
+        response.put("username", username);
+
+        return ResponseEntity.ok(response);
     }
 }
-
-
-
