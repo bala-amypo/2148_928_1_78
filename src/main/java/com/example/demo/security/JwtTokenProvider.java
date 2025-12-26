@@ -41,8 +41,13 @@ public class JwtTokenProvider {
         }
     }
 
-    public String getUsernameFromToken(String token) {
+    // ✅ REQUIRED BY JwtAuthenticationFilter
+    public String getEmailFromToken(String token) {
         return getAllClaims(token).get("email").toString();
+    }
+
+    public String getUsernameFromToken(String token) {
+        return getEmailFromToken(token);
     }
 
     public Map<String, Object> getAllClaims(String token) {
