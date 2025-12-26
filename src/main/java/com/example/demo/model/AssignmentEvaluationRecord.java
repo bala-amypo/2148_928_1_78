@@ -1,40 +1,40 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "assignment_evaluation_records")
 public class AssignmentEvaluationRecord {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @ManyToOne
-    @JoinColumn(name = "assignment_id", nullable = false)
-    private TaskAssignmentRecord assignment;
-
+    
+    @Column(name = "assignment_id")
+    private Long assignmentId;
+    
     private String feedback;
-    private int rating;
-
+    private Integer rating;
+    
+    @Column(name = "evaluated_at")
+    private LocalDateTime evaluatedAt;
+    
+    // Constructors
     public AssignmentEvaluationRecord() {}
-
-    public AssignmentEvaluationRecord(TaskAssignmentRecord assignment,
-                                      String feedback, int rating) {
-        this.assignment = assignment;
-        this.feedback = feedback;
-        this.rating = rating;
-    }
-
+    
+    // Getters and Setters
     public Long getId() { return id; }
-
-    public TaskAssignmentRecord getAssignment() { return assignment; }
-    public void setAssignment(TaskAssignmentRecord assignment) {
-        this.assignment = assignment;
-    }
-
+    public void setId(Long id) { this.id = id; }
+    
+    public Long getAssignmentId() { return assignmentId; }
+    public void setAssignmentId(Long assignmentId) { this.assignmentId = assignmentId; }
+    
     public String getFeedback() { return feedback; }
     public void setFeedback(String feedback) { this.feedback = feedback; }
-
-    public int getRating() { return rating; }
-    public void setRating(int rating) { this.rating = rating; }
+    
+    public Integer getRating() { return rating; }
+    public void setRating(Integer rating) { this.rating = rating; }
+    
+    public LocalDateTime getEvaluatedAt() { return evaluatedAt; }
+    public void setEvaluatedAt(LocalDateTime evaluatedAt) { this.evaluatedAt = evaluatedAt; }
 }
