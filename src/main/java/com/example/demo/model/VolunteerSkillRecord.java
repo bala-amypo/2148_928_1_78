@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "volunteer_skill_records")
 public class VolunteerSkillRecord {
 
     @Id
@@ -11,16 +12,25 @@ public class VolunteerSkillRecord {
     private Long id;
 
     private Long volunteerId;
+
     private String skillName;
+
     private String skillLevel;
-    private Boolean certified;
+
+    private boolean certified;
 
     private LocalDateTime updatedAt;
 
     @PrePersist
     @PreUpdate
-    public void touch() {
-        updatedAt = LocalDateTime.now();
+    public void onUpdate() {
+        this.updatedAt = LocalDateTime.now();
+    }
+
+    // ===== Getters & Setters =====
+
+    public Long getId() {
+        return id;
     }
 
     public Long getVolunteerId() {
@@ -47,22 +57,15 @@ public class VolunteerSkillRecord {
         this.skillLevel = skillLevel;
     }
 
-    // ✅ REQUIRED
-    public Boolean getCertified() {
+    public boolean isCertified() {
         return certified;
     }
 
-    public void setCertified(Boolean certified) {
+    public void setCertified(boolean certified) {
         this.certified = certified;
     }
 
-    // ✅ REQUIRED
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
-    }
-
-    // ✅ REQUIRED
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
     }
 }

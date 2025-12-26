@@ -10,18 +10,20 @@ public class VolunteerProfile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true)
     private String volunteerId;
 
     private String fullName;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true)
     private String email;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true)
     private String phone;
 
     private String availabilityStatus;
+
+    // ===== Getters & Setters =====
 
     public Long getId() {
         return id;
