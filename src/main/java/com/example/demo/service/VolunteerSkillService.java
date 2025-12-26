@@ -1,25 +1,15 @@
 package com.example.demo.service;
 
 import com.example.demo.model.VolunteerSkillRecord;
-import com.example.demo.repository.VolunteerSkillRecordRepository;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
+import java.util.Optional;
 
-@Service
-public class VolunteerSkillService {
-
-    private final VolunteerSkillRecordRepository repository;
-
-    public VolunteerSkillService(VolunteerSkillRecordRepository repository) {
-        this.repository = repository;
-    }
-
-    public VolunteerSkillRecord addSkill(VolunteerSkillRecord record) {
-        return repository.save(record);
-    }
-
-    public List<VolunteerSkillRecord> getSkillsByVolunteer(Long volunteerId) {
-        return repository.findByVolunteerId(volunteerId);
-    }
+public interface VolunteerSkillService {
+    VolunteerSkillRecord addOrUpdateSkill(VolunteerSkillRecord skill);
+    List<VolunteerSkillRecord> getSkillsByVolunteerId(Long volunteerId);
+    List<VolunteerSkillRecord> getVolunteersBySkill(String skillName);
+    List<VolunteerSkillRecord> getVolunteersBySkillAndLevel(String skillName, Integer minLevel);
+    List<VolunteerSkillRecord> getCertifiedVolunteersBySkill(String skillName);
+    boolean deleteSkill(Long id);
+    Optional<VolunteerSkillRecord> getSkillById(Long id);
 }
