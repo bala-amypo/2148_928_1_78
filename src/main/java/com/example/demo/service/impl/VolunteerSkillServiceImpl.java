@@ -49,6 +49,13 @@ public class VolunteerSkillServiceImpl implements VolunteerSkillService {
         return repository.findAll();
     }
 
+    // 🔴 REQUIRED BY INTERFACE
+    @Override
+    public List<VolunteerSkillRecord> getCertifiedVolunteersBySkill(
+            String skillName) {
+        return repository.findBySkillNameAndCertifiedTrue(skillName);
+    }
+
     @Override
     public boolean deleteSkill(Long id) {
         if (!repository.existsById(id)) {

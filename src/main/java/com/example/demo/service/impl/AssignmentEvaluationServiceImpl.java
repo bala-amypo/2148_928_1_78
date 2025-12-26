@@ -41,8 +41,9 @@ public class AssignmentEvaluationServiceImpl
         return evaluationRepo.findById(id);
     }
 
+    // 🔴 REQUIRED BY INTERFACE (NAME MUST MATCH EXACTLY)
     @Override
-    public List<AssignmentEvaluationRecord> getEvaluationsByAssignment(
+    public List<AssignmentEvaluationRecord> getEvaluationByAssignmentId(
             Long assignmentId) {
         return evaluationRepo.findByAssignmentId(assignmentId);
     }
