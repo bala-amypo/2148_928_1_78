@@ -1,13 +1,8 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.model.TaskAssignmentRecord;
-import com.example.demo.model.TaskRecord;
-import com.example.demo.model.VolunteerProfile;
-import com.example.demo.model.VolunteerSkillRecord;
-import com.example.demo.repository.TaskAssignmentRecordRepository;
-import com.example.demo.repository.TaskRecordRepository;
-import com.example.demo.repository.VolunteerProfileRepository;
-import com.example.demo.repository.VolunteerSkillRecordRepository;
+import com.example.demo.exception.BadRequestException;
+import com.example.demo.model.*;
+import com.example.demo.repository.*;
 import com.example.demo.service.TaskAssignmentService;
 import com.example.demo.util.SkillLevelUtil;
 import org.springframework.stereotype.Service;
@@ -40,51 +35,39 @@ public class TaskAssignmentServiceImpl implements TaskAssignmentService {
         TaskRecord task = taskRepo.findById(taskId).orElseThrow();
 
         if (assignmentRepo.existsByTaskIdAndStatus(taskId, "ACTIVE")) {
-            throw new RuntimeException("ACTIVE assignment");
+            throw new BadRequestException("ACTIVE assignment");
         }
 
         List<VolunteerProfile> volunteers =
                 volunteerRepo.findByAvailabilityStatus("AVAILABLE");
 
         if (volunteers.isEmpty()) {
-            throw new RuntimeException("No AVAILABLE volunteers");
+            throw new BadRequestException("No AVAILABLE volunteers");
         }
 
         for (VolunteerProfile v : volunteers) {
 
-           Optional<VolunteerSkillRecord> skillOpt =
-        skillRepo.findByVolunteerIdAndSkillName(
-                v.getId(), task.getRequiredSkill()
-        );
+            List<VolunteerSkillRecord> skills =
+                    skillRepo.findByVolunteerId(v.getId());
 
-if (skillOpt.isPresent()) {
-    VolunteerSkillRecord skill = skillOpt.get();
+            for (VolunteerSkillRecord s : skills) {
+                if (s.getSkillName().equals(task.getRequiredSkill())) {
 
-    int vRank = SkillLevelUtil.levelRank(skill.getSkillLevel());
-    int tRank = SkillLevelUtil.levelRank(task.getRequiredSkillLevel());
+                    int vRank = SkillLevelUtil.levelRank(s.getSkillLevel());
+                    int tRank = SkillLevelUtil.levelRank(task.getRequiredSkillLevel());
 
-    if (vRank >= tRank) {
-        TaskAssignmentRecord ar = new TaskAssignmentRecord();
-        ar.setTaskId(taskId);
-        ar.setVolunteerId(v.getId());
-        ar.setStatus("ACTIVE");
-        return assignmentRepo.save(ar);
-    }
-}
-
-                int tRank = SkillLevelUtil.levelRank(task.getRequiredSkillLevel());
-
-                if (vRank >= tRank) {
-                    TaskAssignmentRecord ar = new TaskAssignmentRecord();
-                    ar.setTaskId(taskId);
-                    ar.setVolunteerId(v.getId());
-                    ar.setStatus("ACTIVE");
-                    return assignmentRepo.save(ar);
+                    if (vRank >= tRank) {
+                        TaskAssignmentRecord ar = new TaskAssignmentRecord();
+                        ar.setTaskId(taskId);
+                        ar.setVolunteerId(v.getId());
+                        ar.setStatus("ACTIVE");
+                        return assignmentRepo.save(ar);
+                    }
                 }
             }
         }
 
-        throw new RuntimeException("required skill level");
+        throw new BadRequestException("required skill level");
     }
 
     @Override

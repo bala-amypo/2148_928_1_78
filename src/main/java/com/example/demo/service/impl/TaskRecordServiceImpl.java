@@ -6,6 +6,7 @@ import com.example.demo.service.TaskRecordService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TaskRecordServiceImpl implements TaskRecordService {
@@ -18,14 +19,23 @@ public class TaskRecordServiceImpl implements TaskRecordService {
 
     @Override
     public TaskRecord createTask(TaskRecord task) {
+        if (task.getStatus() == null) {
+            task.setStatus("OPEN"); // required by test #26
+        }
         return repository.save(task);
     }
 
     @Override
     public TaskRecord updateTask(Long id, TaskRecord updated) {
-        TaskRecord t = repository.findById(id).orElseThrow();
-        t.setTaskName(updated.getTaskName());
-        return repository.save(t);
+        TaskRecord existing = repository.findById(id).orElseThrow();
+
+        existing.setTaskName(updated.getTaskName());
+        existing.setRequiredSkill(updated.getRequiredSkill());
+        existing.setRequiredSkillLevel(updated.getRequiredSkillLevel());
+        existing.setPriority(updated.getPriority());
+        existing.setStatus(updated.getStatus());
+
+        return repository.save(existing);
     }
 
     @Override
@@ -34,12 +44,17 @@ public class TaskRecordServiceImpl implements TaskRecordService {
     }
 
     @Override
-    public TaskRecord getTaskByCode(String code) {
-        return repository.findByTaskCode(code).orElseThrow();
+    public Optional<TaskRecord> getTaskByCode(String code) {
+        return repository.findByTaskCode(code);
     }
 
     @Override
     public List<TaskRecord> getAllTasks() {
         return repository.findAll();
+    }
+
+    @Override
+    public List<TaskRecord> getOpenTasks() {
+        return repository.findByStatus("OPEN");
     }
 }
