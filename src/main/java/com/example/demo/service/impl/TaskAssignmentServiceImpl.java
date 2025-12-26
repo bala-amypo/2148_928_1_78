@@ -46,17 +46,11 @@ public class TaskAssignmentServiceImpl implements TaskAssignmentService {
         }
 
         for (VolunteerProfile v : volunteers) {
+            for (VolunteerSkillRecord s : skillRepo.findByVolunteerId(v.getId())) {
 
-            List<VolunteerSkillRecord> skills =
-                    skillRepo.findByVolunteerId(v.getId());
-
-            for (VolunteerSkillRecord s : skills) {
                 if (s.getSkillName().equals(task.getRequiredSkill())) {
-
                     int vRank = SkillLevelUtil.levelRank(s.getSkillLevel());
-                    int tRank = SkillLevelUtil.levelRank(
-                            String.valueOf(task.getRequiredSkillLevel())
-                    );
+                    int tRank = SkillLevelUtil.levelRank(task.getRequiredSkillLevel());
 
                     if (vRank >= tRank) {
                         TaskAssignmentRecord ar = new TaskAssignmentRecord();
@@ -68,28 +62,17 @@ public class TaskAssignmentServiceImpl implements TaskAssignmentService {
                 }
             }
         }
-
         throw new BadRequestException("required skill level");
     }
 
-    @Override
-    public TaskAssignmentRecord updateAssignmentStatus(Long id, String status) {
-        TaskAssignmentRecord ar = assignmentRepo.findById(id).orElseThrow();
-        ar.setStatus(status);
-        return assignmentRepo.save(ar);
+    public List<TaskAssignmentRecord> getAssignmentsByVolunteer(Long id) {
+        return assignmentRepo.findByVolunteerId(id);
     }
 
-    @Override
-    public List<TaskAssignmentRecord> getAssignmentsByVolunteer(Long volunteerId) {
-        return assignmentRepo.findByVolunteerId(volunteerId);
+    public List<TaskAssignmentRecord> getAssignmentsByTask(Long id) {
+        return assignmentRepo.findByTaskId(id);
     }
 
-    @Override
-    public List<TaskAssignmentRecord> getAssignmentsByTask(Long taskId) {
-        return assignmentRepo.findByTaskId(taskId);
-    }
-
-    @Override
     public List<TaskAssignmentRecord> getAllAssignments() {
         return assignmentRepo.findAll();
     }
