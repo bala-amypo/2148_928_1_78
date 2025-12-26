@@ -88,3 +88,13 @@
     </build>
 
 </project>
+
+
+ src/main/java/com/example/demo/
+ └── dto
+     ├── RegisterRequest.java
+     ├── AuthRequest.java
+     ├── AuthResponse.java
+     ├── AvailabilityUpdateRequest.java
+     ├── AssignmentStatusUpdateRequest.java
+     └── EvaluationRequest.java
