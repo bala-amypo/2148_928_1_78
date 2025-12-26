@@ -1,20 +1,17 @@
-package com.example.demo.service.impl;
+package com.example.demo.service;
 
-import com.example.demo.model.TaskRecord;
-import com.example.demo.repository.TaskRecordRepository;
-import com.example.demo.service.TaskRecordService;
-import org.springframework.stereotype.Service;
-
+import com.example.demo.model.TaskAssignmentRecord;
 import java.util.List;
 
-@Service
-public class TaskRecordServiceImpl implements TaskRecordService {
+public interface TaskAssignmentService {
 
-    private final TaskRecordRepository repository;
+    TaskAssignmentRecord assignTask(Long taskId);
 
-    public TaskRecordServiceImpl(TaskRecordRepository repository) {
-        this.repository = repository;
-    }
+    TaskAssignmentRecord updateAssignmentStatus(Long id, String status);
 
-    // implement methods
+    List<TaskAssignmentRecord> getAssignmentsByVolunteer(Long volunteerId);
+
+    List<TaskAssignmentRecord> getAssignmentsByTask(Long taskId);
+
+    List<TaskAssignmentRecord> getAllAssignments();
 }

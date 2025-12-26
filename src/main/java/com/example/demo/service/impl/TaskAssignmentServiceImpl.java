@@ -1,92 +1,94 @@
-package com.example.demo.service;
+package com.example.demo.service.impl;
 
 import com.example.demo.model.TaskAssignmentRecord;
+import com.example.demo.model.TaskRecord;
+import com.example.demo.model.VolunteerProfile;
 import com.example.demo.repository.TaskAssignmentRecordRepository;
 import com.example.demo.repository.TaskRecordRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.repository.VolunteerProfileRepository;
+import com.example.demo.repository.VolunteerSkillRecordRepository;
+import com.example.demo.service.TaskAssignmentService;
+import com.example.demo.util.SkillLevelUtil;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 
 @Service
-@Transactional
 public class TaskAssignmentServiceImpl implements TaskAssignmentService {
 
-    @Autowired
-    private TaskAssignmentRecordRepository taskAssignmentRepository;
+    private final TaskAssignmentRecordRepository assignmentRepo;
+    private final TaskRecordRepository taskRepo;
+    private final VolunteerProfileRepository volunteerRepo;
+    private final VolunteerSkillRecordRepository skillRepo;
 
-    @Autowired
-    private TaskRecordRepository taskRecordRepository;
+    // ⚠️ CONSTRUCTOR ORDER MUST MATCH SPEC
+    public TaskAssignmentServiceImpl(
+            TaskAssignmentRecordRepository assignmentRepo,
+            TaskRecordRepository taskRepo,
+            VolunteerProfileRepository volunteerRepo,
+            VolunteerSkillRecordRepository skillRepo) {
 
-    @Override
-    public TaskAssignmentRecord assignTask(Long taskId, Long volunteerId) {
-        // Check if task is already assigned
-        if (taskAssignmentRepository.existsByTaskIdAndStatus(taskId, "ASSIGNED")) {
-            throw new RuntimeException("Task is already assigned");
-        }
-
-        // Create new assignment
-        TaskAssignmentRecord assignment = new TaskAssignmentRecord();
-        assignment.setTaskId(taskId);
-        assignment.setVolunteerId(volunteerId);
-        assignment.setStatus("ASSIGNED");
-        assignment.setAssignedAt(LocalDateTime.now());
-
-        // Update task status
-        taskRecordRepository.findById(taskId).ifPresent(task -> {
-            task.setStatus("ASSIGNED");
-            task.setUpdatedAt(LocalDateTime.now());
-            taskRecordRepository.save(task);
-        });
-
-        return taskAssignmentRepository.save(assignment);
+        this.assignmentRepo = assignmentRepo;
+        this.taskRepo = taskRepo;
+        this.volunteerRepo = volunteerRepo;
+        this.skillRepo = skillRepo;
     }
 
     @Override
-    public TaskAssignmentRecord completeAssignment(Long assignmentId) {
-        Optional<TaskAssignmentRecord> optionalAssignment = taskAssignmentRepository.findById(assignmentId);
-        if (optionalAssignment.isPresent()) {
-            TaskAssignmentRecord assignment = optionalAssignment.get();
-            assignment.setStatus("COMPLETED");
-            assignment.setCompletedAt(LocalDateTime.now());
+    public TaskAssignmentRecord assignTask(Long taskId) {
+        TaskRecord task = taskRepo.findById(taskId).orElseThrow();
 
-            // Update task status
-            taskRecordRepository.findById(assignment.getTaskId()).ifPresent(task -> {
-                task.setStatus("COMPLETED");
-                task.setUpdatedAt(LocalDateTime.now());
-                taskRecordRepository.save(task);
-            });
-
-            return taskAssignmentRepository.save(assignment);
+        if (assignmentRepo.existsByTaskIdAndStatus(taskId, "ACTIVE")) {
+            throw new RuntimeException("ACTIVE assignment");
         }
-        return null;
+
+        List<VolunteerProfile> volunteers =
+                volunteerRepo.findByAvailabilityStatus("AVAILABLE");
+
+        if (volunteers.isEmpty()) {
+            throw new RuntimeException("No AVAILABLE volunteers");
+        }
+
+        for (VolunteerProfile v : volunteers) {
+            var skills = skillRepo.findByVolunteerIdAndSkillName(
+                    v.getId(), task.getRequiredSkill());
+
+            if (!skills.isEmpty()) {
+                int vRank = SkillLevelUtil.levelRank(skills.get(0).getSkillLevel());
+                int tRank = SkillLevelUtil.levelRank(task.getRequiredSkillLevel());
+
+                if (vRank >= tRank) {
+                    TaskAssignmentRecord ar = new TaskAssignmentRecord();
+                    ar.setTaskId(taskId);
+                    ar.setVolunteerId(v.getId());
+                    ar.setStatus("ACTIVE");
+                    return assignmentRepo.save(ar);
+                }
+            }
+        }
+
+        throw new RuntimeException("required skill level");
     }
 
     @Override
-    public List<TaskAssignmentRecord> getAssignmentsByTask(Long taskId) {
-        return taskAssignmentRepository.findByTaskId(taskId);
+    public TaskAssignmentRecord updateAssignmentStatus(Long id, String status) {
+        TaskAssignmentRecord ar = assignmentRepo.findById(id).orElseThrow();
+        ar.setStatus(status);
+        return assignmentRepo.save(ar);
     }
 
     @Override
     public List<TaskAssignmentRecord> getAssignmentsByVolunteer(Long volunteerId) {
-        return taskAssignmentRepository.findByVolunteerId(volunteerId);
+        return assignmentRepo.findByVolunteerId(volunteerId);
+    }
+
+    @Override
+    public List<TaskAssignmentRecord> getAssignmentsByTask(Long taskId) {
+        return assignmentRepo.findByTaskId(taskId);
     }
 
     @Override
     public List<TaskAssignmentRecord> getAllAssignments() {
-        return taskAssignmentRepository.findAll();
-    }
-
-    @Override
-    public Optional<TaskAssignmentRecord> getAssignmentById(Long id) {
-        return taskAssignmentRepository.findById(id);
-    }
-
-    @Override
-    public List<TaskAssignmentRecord> getAssignmentsByStatus(String status) {
-        return taskAssignmentRepository.findByStatus(status);
+        return assignmentRepo.findAll();
     }
 }
