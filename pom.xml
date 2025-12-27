@@ -30,8 +30,6 @@
         <mockito.version>5.5.0</mockito.version>
         <springdoc.version>2.2.0</springdoc.version>
         <swagger.version>2.2.15</swagger.version>
-        <surefire.version>3.1.2</surefire.version>
-        <jacoco.version>0.8.10</jacoco.version>
     </properties>
     
     <dependencies>
@@ -126,12 +124,6 @@
             <optional>true</optional>
         </dependency>
         
-        <!-- ========== UTILITIES ========== -->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-        
         <!-- ========== DEVELOPMENT ========== -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -141,18 +133,14 @@
         </dependency>
         
         <!-- ========== TEST DEPENDENCIES ========== -->
+        <!-- Spring Boot Test Starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         
+        <!-- Spring Security Test -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
@@ -232,30 +220,39 @@
                 </configuration>
             </plugin>
             
-            <!-- Surefire Plugin for TestNG -->
+            <!-- Maven Surefire Plugin for TestNG -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${surefire.version}</version>
+                <version>3.1.2</version>
                 <configuration>
-                    <!-- Use TestNG instead of JUnit -->
+                    <!-- Force TestNG usage -->
                     <useSystemClassLoader>false</useSystemClassLoader>
                     
-                    <!-- TestNG Configuration -->
-                    <suiteXmlFiles>
-                        <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
-                    </suiteXmlFiles>
-                    
-                    <!-- Include/Exclude patterns -->
+                    <!-- Include all test files -->
                     <includes>
-                        <include>**/*Test*.java</include>
+                        <include>**/*Test.java</include>
                         <include>**/*Tests.java</include>
+                        <include>**/*TestNG.java</include>
                     </includes>
                     
+                    <!-- Exclude integration tests -->
                     <excludes>
                         <exclude>**/*IT.java</exclude>
                         <exclude>**/*IntegrationTest.java</exclude>
                     </excludes>
+                    
+                    <!-- TestNG configuration -->
+                    <properties>
+                        <property>
+                            <name>surefire.testng.verbose</name>
+                            <value>5</value>
+                        </property>
+                    </properties>
+                    
+                    <!-- Enable parallel execution -->
+                    <parallel>methods</parallel>
+                    <threadCount>4</threadCount>
                 </configuration>
             </plugin>
             
@@ -263,7 +260,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${jacoco.version}</version>
+                <version>0.8.10</version>
                 <executions>
                     <execution>
                         <goals>
@@ -280,5 +277,36 @@
                 </executions>
             </plugin>
         </plugins>
+        
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
     </build>
+    
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <spring.profiles.active>dev</spring.profiles.active>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <spring.profiles.active>test</spring.profiles.active>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <spring.profiles.active>prod</spring.profiles.active>
+            </properties>
+        </profile>
+    </profiles>
 </project>
