@@ -1,0 +1,16 @@
+mkdir -p src/test/resources/
+cat > src/test/resources/testng.xml << 'EOF'
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Test Suite" verbose="10">
+    <listeners>
+        <listener class-name="com.example.demo.TestResultListener" />
+    </listeners>
+    
+    <test name="All Tests">
+        <classes>
+            <class name="com.example.demo.SimpleTest" />
+            <class name="com.example.demo.SkillBasedVolunteerTaskAssignorApplicationTests" />
+        </classes>
+    </test>
+</suite>
+EOF

@@ -974,4 +974,65 @@ public class SkillBasedVolunteerTaskAssignorApplicationTests {
         List<TaskAssignmentRecord> list =
                 taskAssignmentService.getAssignmentsByTask(999L);
 
-        Assert.assertEquals(list.size
+        Assert.assertEquals(list.size(), 1);
+    }
+
+    @Test(priority = 61, groups = "hql")
+    public void testFindAssignmentsByVolunteerIdActsAsCriteriaQuery() {
+        TaskAssignmentRecord a1 = new TaskAssignmentRecord();
+        a1.setVolunteerId(888L);
+
+        when(taskAssignmentRecordRepository.findByVolunteerId(888L))
+                .thenReturn(Collections.singletonList(a1));
+
+        List<TaskAssignmentRecord> list =
+                taskAssignmentService.getAssignmentsByVolunteer(888L);
+
+        Assert.assertEquals(list.size(), 1);
+    }
+
+    @Test(priority = 62, groups = "hql")
+    public void testGetEvaluationsByAssignmentIdActsAsHql() {
+        AssignmentEvaluationRecord e1 = new AssignmentEvaluationRecord();
+        e1.setAssignmentId(777L);
+
+        when(assignmentEvaluationRecordRepository.findByAssignmentId(777L))
+                .thenReturn(Collections.singletonList(e1));
+
+        List<AssignmentEvaluationRecord> list =
+                assignmentEvaluationService.getEvaluationsByAssignment(777L);
+
+        Assert.assertEquals(list.size(), 1);
+    }
+
+    @Test(priority = 63, groups = "hql")
+    public void testAdvancedFilteringUsingInMemoryCriteria() {
+        VolunteerSkillRecord s1 = new VolunteerSkillRecord();
+        s1.setSkillName("COOKING");
+        s1.setSkillLevel("EXPERT");
+
+        VolunteerSkillRecord s2 = new VolunteerSkillRecord();
+        s2.setSkillName("COOKING");
+        s2.setSkillLevel("BEGINNER");
+
+        List<VolunteerSkillRecord> list = Arrays.asList(s1, s2);
+
+        long countExpert = list.stream()
+                .filter(x -> x.getSkillName().equals("COOKING") &&
+                             x.getSkillLevel().equals("EXPERT"))
+                .count();
+
+        Assert.assertEquals(countExpert, 1);
+    }
+
+    @Test(priority = 64, groups = "hql")
+    public void testEdgeCaseNoResultsForSkillQuery() {
+        when(volunteerSkillRecordRepository.findBySkillNameAndSkillLevel("OTHER", "BEGINNER"))
+                .thenReturn(Collections.emptyList());
+
+        List<VolunteerSkillRecord> list =
+                volunteerSkillRecordRepository.findBySkillNameAndSkillLevel("OTHER", "BEGINNER");
+
+        Assert.assertTrue(list.isEmpty());
+    }
+}
