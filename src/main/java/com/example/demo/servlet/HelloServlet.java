@@ -15,4 +15,10 @@ public class HelloServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         out.println("Hello from HelloServlet");
     }
+    
+    // Add a public wrapper method for testing
+    public void processGet(HttpServletRequest request, HttpServletResponse response) 
+            throws IOException {
+        doGet(request, response);
+    }
 }
