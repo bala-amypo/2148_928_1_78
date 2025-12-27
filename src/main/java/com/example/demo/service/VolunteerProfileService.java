@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface VolunteerProfileService {
-    VolunteerProfile createVolunteer(VolunteerProfile volunteerProfile);
+    VolunteerProfile createVolunteer(VolunteerProfile volunteerProfile);  // Changed from createProfile
     VolunteerProfile getVolunteerById(Long id);
     List<VolunteerProfile> getAllVolunteers();
     VolunteerProfile updateVolunteer(Long id, VolunteerProfile volunteerProfile);
     void deleteVolunteer(Long id);
-    Optional<VolunteerProfile> findByVolunteerId(String volunteerId);
+    Optional<VolunteerProfile> findByVolunteerId(String volunteerId);  // Changed from getByVolunteerId
 }

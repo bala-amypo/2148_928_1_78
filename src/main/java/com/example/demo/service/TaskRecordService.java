@@ -11,5 +11,5 @@ public interface TaskRecordService {
     TaskRecord updateTask(Long id, TaskRecord taskRecord);
     void deleteTask(Long id);
     List<TaskRecord> getOpenTasks();
-    Optional<TaskRecord> getTaskByCode(String taskCode);
+    Optional<TaskRecord> getTaskByCode(String taskCode);  // Changed from getByTaskCode
 }
