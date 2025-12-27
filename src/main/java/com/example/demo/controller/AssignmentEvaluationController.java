@@ -2,30 +2,35 @@ package com.example.demo.controller;
 
 import com.example.demo.model.AssignmentEvaluationRecord;
 import com.example.demo.service.AssignmentEvaluationService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/evaluations")
+@RequestMapping("/api/evaluations")
+@Tag(name = "Assignment Evaluation", description = "APIs for evaluating assignments")
 public class AssignmentEvaluationController {
 
-    private final AssignmentEvaluationService service;
-
-    public AssignmentEvaluationController(AssignmentEvaluationService service) {
-        this.service = service;
-    }
+    @Autowired
+    private AssignmentEvaluationService service;
 
     @PostMapping
-    public ResponseEntity<AssignmentEvaluationRecord> submit(
-            @RequestBody AssignmentEvaluationRecord record) {
-        return ResponseEntity.ok(service.submitEvaluation(record));
+    @Operation(summary = "Evaluate an assignment")
+    public ResponseEntity<AssignmentEvaluationRecord> evaluateAssignment(
+            @RequestBody AssignmentEvaluationRecord evaluation) {
+        AssignmentEvaluationRecord result = service.evaluateAssignment(evaluation);
+        return ResponseEntity.ok(result);
     }
 
-    @GetMapping("/{assignmentId}")
-    public ResponseEntity<List<AssignmentEvaluationRecord>> get(
+    @GetMapping("/assignment/{assignmentId}")
+    @Operation(summary = "Get evaluations by assignment ID")
+    public ResponseEntity<List<AssignmentEvaluationRecord>> getEvaluationsByAssignment(
             @PathVariable Long assignmentId) {
-        return ResponseEntity.ok(service.getEvaluations(assignmentId));
+        List<AssignmentEvaluationRecord> evaluations = service.getEvaluationsByAssignment(assignmentId);
+        return ResponseEntity.ok(evaluations);
     }
 }
