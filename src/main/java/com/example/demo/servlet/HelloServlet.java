@@ -3,20 +3,16 @@ package com.example.demo.servlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 
 public class HelloServlet extends HttpServlet {
-
+    
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws IOException {
-
         response.setContentType("text/plain");
-
-        PrintWriter writer = response.getWriter();
-        writer.write("Hello from HelloServlet");
-        writer.flush();
+        PrintWriter out = response.getWriter();
+        out.println("Hello from HelloServlet");
     }
 }

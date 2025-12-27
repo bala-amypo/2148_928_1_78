@@ -1,26 +1,26 @@
 package com.example.demo.util;
 
+import java.util.Map;
+
 public class SkillLevelUtil {
-
+    
+    private static final Map<String, Integer> LEVEL_RANKS = Map.of(
+        "BEGINNER", 1,
+        "INTERMEDIATE", 2,
+        "EXPERT", 3
+    );
+    
+    private static final Map<String, Integer> PRIORITY_RANKS = Map.of(
+        "LOW", 1,
+        "MEDIUM", 2,
+        "HIGH", 3
+    );
+    
     public static int levelRank(String level) {
-        if (level == null) return 0;
-
-        return switch (level.toUpperCase()) {
-            case "BEGINNER" -> 1;
-            case "INTERMEDIATE" -> 2;
-            case "EXPERT" -> 3;
-            default -> 0;
-        };
+        return LEVEL_RANKS.getOrDefault(level, 0);
     }
-
+    
     public static int priorityRank(String priority) {
-        if (priority == null) return 0;
-
-        return switch (priority.toUpperCase()) {
-            case "LOW" -> 1;
-            case "MEDIUM" -> 2;
-            case "HIGH" -> 3;
-            default -> 0;
-        };
+        return PRIORITY_RANKS.getOrDefault(priority, 0);
     }
 }
