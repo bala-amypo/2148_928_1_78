@@ -932,4 +932,46 @@ public class SkillBasedVolunteerTaskAssignorApplicationTests {
                 volunteerSkillRecordRepository.findBySkillNameAndSkillLevel("CODING", "INTERMEDIATE");
 
         Assert.assertEquals(list.size(), 1);
-        Assert.assertEquals(list.get(0).getSkillLevel(), "
+        Assert.assertEquals(list.get(0).getSkillLevel(), "INTERMEDIATE");
+    }
+
+    @Test(priority = 58, groups = "hql")
+    public void testGetOpenTasksViaRepositoryHqlEquivalent() {
+        TaskRecord t1 = new TaskRecord();
+        t1.setStatus("OPEN");
+
+        when(taskRecordRepository.findByStatus("OPEN"))
+                .thenReturn(Collections.singletonList(t1));
+
+        List<TaskRecord> open = taskRecordService.getOpenTasks();
+
+        Assert.assertEquals(open.size(), 1);
+    }
+
+    @Test(priority = 59, groups = "hql")
+    public void testSkillSearchByNameUsingQueryAsHql() {
+        VolunteerSkillRecord rec = new VolunteerSkillRecord();
+        rec.setSkillName("TEACHING");
+        rec.setSkillLevel("EXPERT");
+
+        when(volunteerSkillRecordRepository.findBySkillName("TEACHING"))
+                .thenReturn(Collections.singletonList(rec));
+
+        List<VolunteerSkillRecord> list =
+                volunteerSkillRecordRepository.findBySkillName("TEACHING");
+
+        Assert.assertEquals(list.get(0).getSkillLevel(), "EXPERT");
+    }
+
+    @Test(priority = 60, groups = "hql")
+    public void testFindAssignmentsByTaskIdActsAsCriteriaQuery() {
+        TaskAssignmentRecord a1 = new TaskAssignmentRecord();
+        a1.setTaskId(999L);
+
+        when(taskAssignmentRecordRepository.findByTaskId(999L))
+                .thenReturn(Collections.singletonList(a1));
+
+        List<TaskAssignmentRecord> list =
+                taskAssignmentService.getAssignmentsByTask(999L);
+
+        Assert.assertEquals(list.size
