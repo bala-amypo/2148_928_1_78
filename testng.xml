@@ -13,4 +13,3 @@ cat > src/test/resources/testng.xml << 'EOF'
         </classes>
     </test>
 </suite>
-EOF
