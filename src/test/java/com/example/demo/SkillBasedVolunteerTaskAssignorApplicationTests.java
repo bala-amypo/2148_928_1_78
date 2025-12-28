@@ -20,7 +20,6 @@ import org.testng.annotations.*;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -85,10 +84,7 @@ public class SkillBasedVolunteerTaskAssignorApplicationTests {
         StringWriter writer = new StringWriter();
         when(response.getWriter()).thenReturn(new PrintWriter(writer));
 
-        Method doGetMethod = HelloServlet.class.getDeclaredMethod(
-            "doGet", HttpServletRequest.class, HttpServletResponse.class);
-        doGetMethod.setAccessible(true);
-        doGetMethod.invoke(servlet, request, response);
+        servlet.doGet(request, response);
 
         Assert.assertTrue(writer.toString().contains("Hello from HelloServlet"));
     }
@@ -101,10 +97,7 @@ public class SkillBasedVolunteerTaskAssignorApplicationTests {
 
         when(response.getWriter()).thenReturn(new PrintWriter(new StringWriter()));
 
-        Method doGetMethod = HelloServlet.class.getDeclaredMethod(
-            "doGet", HttpServletRequest.class, HttpServletResponse.class);
-        doGetMethod.setAccessible(true);
-        doGetMethod.invoke(servlet, request, response);
+        servlet.doGet(request, response);
 
         verify(response).setContentType("text/plain");
     }
@@ -116,11 +109,8 @@ public class SkillBasedVolunteerTaskAssignorApplicationTests {
         HttpServletResponse response = mock(HttpServletResponse.class);
         when(response.getWriter()).thenReturn(new PrintWriter(new StringWriter()));
 
-        Method doGetMethod = HelloServlet.class.getDeclaredMethod(
-            "doGet", HttpServletRequest.class, HttpServletResponse.class);
-        doGetMethod.setAccessible(true);
-        doGetMethod.invoke(servlet, request, response);
-        doGetMethod.invoke(servlet, request, response);
+        servlet.doGet(request, response);
+        servlet.doGet(request, response);
 
         verify(response, times(2)).getWriter();
     }
@@ -131,11 +121,7 @@ public class SkillBasedVolunteerTaskAssignorApplicationTests {
         HttpServletResponse response = mock(HttpServletResponse.class);
         when(response.getWriter()).thenReturn(new PrintWriter(new StringWriter()));
 
-        Method doGetMethod = HelloServlet.class.getDeclaredMethod(
-            "doGet", HttpServletRequest.class, HttpServletResponse.class);
-        doGetMethod.setAccessible(true);
-        doGetMethod.invoke(servlet, null, response);
-        
+        servlet.doGet(null, response);
         verify(response).getWriter();
     }
 
@@ -147,18 +133,10 @@ public class SkillBasedVolunteerTaskAssignorApplicationTests {
         when(response.getWriter()).thenThrow(new RuntimeException("Writer error"));
 
         try {
-            Method doGetMethod = HelloServlet.class.getDeclaredMethod(
-                "doGet", HttpServletRequest.class, HttpServletResponse.class);
-            doGetMethod.setAccessible(true);
-            doGetMethod.invoke(servlet, request, response);
+            servlet.doGet(request, response);
             Assert.fail("Expected exception");
-        } catch (Exception ex) {
-            Throwable cause = ex.getCause();
-            if (cause instanceof RuntimeException) {
-                Assert.assertEquals(cause.getMessage(), "Writer error");
-            } else {
-                throw ex;
-            }
+        } catch (RuntimeException ex) {
+            Assert.assertEquals(ex.getMessage(), "Writer error");
         }
     }
 
@@ -170,11 +148,7 @@ public class SkillBasedVolunteerTaskAssignorApplicationTests {
         StringWriter writer = new StringWriter();
         when(response.getWriter()).thenReturn(new PrintWriter(writer));
 
-        Method doGetMethod = HelloServlet.class.getDeclaredMethod(
-            "doGet", HttpServletRequest.class, HttpServletResponse.class);
-        doGetMethod.setAccessible(true);
-        doGetMethod.invoke(servlet, request, response);
-        
+        servlet.doGet(request, response);
         Assert.assertTrue(writer.toString().length() > 0);
     }
 
@@ -188,11 +162,8 @@ public class SkillBasedVolunteerTaskAssignorApplicationTests {
         when(response.getWriter()).thenReturn(new PrintWriter(w1))
                                    .thenReturn(new PrintWriter(w2));
 
-        Method doGetMethod = HelloServlet.class.getDeclaredMethod(
-            "doGet", HttpServletRequest.class, HttpServletResponse.class);
-        doGetMethod.setAccessible(true);
-        doGetMethod.invoke(servlet, request, response);
-        doGetMethod.invoke(servlet, request, response);
+        servlet.doGet(request, response);
+        servlet.doGet(request, response);
 
         Assert.assertEquals(w1.toString(), w2.toString());
     }
@@ -202,7 +173,6 @@ public class SkillBasedVolunteerTaskAssignorApplicationTests {
         HelloServlet servlet = new HelloServlet();
         Assert.assertTrue(servlet instanceof jakarta.servlet.http.HttpServlet);
     }
-
     // ================================
     //          2. CRUD TESTS
     // ================================
@@ -394,7 +364,6 @@ public class SkillBasedVolunteerTaskAssignorApplicationTests {
         Assert.assertEquals(SkillLevelUtil.levelRank("INTERMEDIATE"), 2);
         Assert.assertEquals(SkillLevelUtil.levelRank("EXPERT"), 3);
     }
-
     // ================================
     //         4. HIBERNATE TESTS
     // ================================
@@ -605,7 +574,6 @@ public class SkillBasedVolunteerTaskAssignorApplicationTests {
         when(volunteerProfileRepository.findAll()).thenReturn(Collections.emptyList());
         Assert.assertTrue(volunteerProfileService.getAllVolunteers().isEmpty());
     }
-
     // ================================
     //        6. MANY-TO-MANY TESTS
     // ================================
@@ -783,6 +751,7 @@ public class SkillBasedVolunteerTaskAssignorApplicationTests {
         Assert.assertTrue(taskAssignmentService.getAllAssignments().isEmpty());
     }
 
+
     // ================================
     //        7. SECURITY + JWT TESTS
     // ================================
@@ -914,7 +883,6 @@ public class SkillBasedVolunteerTaskAssignorApplicationTests {
 
         Assert.assertNotEquals(t1, t2);
     }
-
     // ================================
     //          8. HQL TESTS
     // ================================
@@ -977,6 +945,63 @@ public class SkillBasedVolunteerTaskAssignorApplicationTests {
         Assert.assertEquals(list.size(), 1);
     }
 
-    // Add any additional test methods here if needed
+    @Test(priority = 61, groups = "hql")
+    public void testFindAssignmentsByVolunteerIdActsAsCriteriaQuery() {
+        TaskAssignmentRecord a1 = new TaskAssignmentRecord();
+        a1.setVolunteerId(888L);
 
-} // End of class
+        when(taskAssignmentRecordRepository.findByVolunteerId(888L))
+                .thenReturn(Collections.singletonList(a1));
+
+        List<TaskAssignmentRecord> list =
+                taskAssignmentService.getAssignmentsByVolunteer(888L);
+
+        Assert.assertEquals(list.size(), 1);
+    }
+
+    @Test(priority = 62, groups = "hql")
+    public void testGetEvaluationsByAssignmentIdActsAsHql() {
+        AssignmentEvaluationRecord e1 = new AssignmentEvaluationRecord();
+        e1.setAssignmentId(777L);
+
+        when(assignmentEvaluationRecordRepository.findByAssignmentId(777L))
+                .thenReturn(Collections.singletonList(e1));
+
+        List<AssignmentEvaluationRecord> list =
+                assignmentEvaluationService.getEvaluationsByAssignment(777L);
+
+        Assert.assertEquals(list.size(), 1);
+    }
+
+    @Test(priority = 63, groups = "hql")
+    public void testAdvancedFilteringUsingInMemoryCriteria() {
+        VolunteerSkillRecord s1 = new VolunteerSkillRecord();
+        s1.setSkillName("COOKING");
+        s1.setSkillLevel("EXPERT");
+
+        VolunteerSkillRecord s2 = new VolunteerSkillRecord();
+        s2.setSkillName("COOKING");
+        s2.setSkillLevel("BEGINNER");
+
+        List<VolunteerSkillRecord> list = Arrays.asList(s1, s2);
+
+        long countExpert = list.stream()
+                .filter(x -> x.getSkillName().equals("COOKING") &&
+                             x.getSkillLevel().equals("EXPERT"))
+                .count();
+
+        Assert.assertEquals(countExpert, 1);
+    }
+
+    @Test(priority = 64, groups = "hql")
+    public void testEdgeCaseNoResultsForSkillQuery() {
+        when(volunteerSkillRecordRepository.findBySkillNameAndSkillLevel("OTHER", "BEGINNER"))
+                .thenReturn(Collections.emptyList());
+
+        List<VolunteerSkillRecord> list =
+                volunteerSkillRecordRepository.findBySkillNameAndSkillLevel("OTHER", "BEGINNER");
+
+        Assert.assertTrue(list.isEmpty());
+    }
+
+}
