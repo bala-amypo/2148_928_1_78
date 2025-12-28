@@ -980,9 +980,4 @@ public class SkillBasedVolunteerTaskAssignorApplicationTests {
     // Add any additional test methods here if needed
 
 } // End of class
-
-
-rm -rf src/main/java/test/
-
-# Check what's left
-find src -name "*.java" -type f
+f
