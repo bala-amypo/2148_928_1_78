@@ -20,4 +20,3 @@ public class TestResultListener implements ITestListener {
         System.out.println(result.getMethod().getMethodName() + " - SKIP");
     }
 }
-src/test/java/com/example/demo/SkillBasedVolunteerTaskAssignorApplicationTests.java
