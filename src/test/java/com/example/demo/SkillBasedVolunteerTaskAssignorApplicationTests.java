@@ -977,4 +977,6 @@ public class SkillBasedVolunteerTaskAssignorApplicationTests {
         Assert.assertEquals(list.size(), 1);
     }
 
-    @Test(priority = 61, groups = "hql
+    // Add any additional test methods here if needed
+
+} // End of class
