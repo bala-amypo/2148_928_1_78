@@ -11,7 +11,6 @@ import com.example.demo.service.impl.*;
 import com.example.demo.util.SkillLevelUtil;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import io.jsonwebtoken.Claims;
 import org.mockito.Mockito;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -865,14 +864,11 @@ public class SkillBasedVolunteerTaskAssignorApplicationTests {
         String token =
                 jwtTokenProvider.generateToken(auth, 42L, "ADMIN");
 
-        // Use the helper methods instead of trying to get claims directly
-        String username = jwtTokenProvider.getUsernameFromToken(token);
-        String role = jwtTokenProvider.getRoleFromToken(token);
-        Long userId = jwtTokenProvider.getUserIdFromToken(token);
+        Map<String, Object> claims = jwtTokenProvider.getAllClaims(token);
 
-        Assert.assertEquals(username, "claims@example.com"); // LINE 871 FIXED
-        Assert.assertEquals(role, "ADMIN");
-        Assert.assertEquals(userId.longValue(), 42L);
+        Assert.assertEquals(((Number) claims.get("userId")).longValue(), 42L);
+        Assert.assertEquals(claims.get("role"), "ADMIN");
+        Assert.assertEquals(claims.get("email"), "claims@example.com");
     }
 
     @Test(priority = 56, groups = "security")

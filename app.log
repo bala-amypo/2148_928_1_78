@@ -756,3 +756,11 @@ Unconditional classes:
 2025-12-29T15:42:19.136Z DEBUG 77122 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /error
 2025-12-29T15:42:19.140Z DEBUG 77122 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /error
 2025-12-29T15:42:19.143Z DEBUG 77122 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-29T15:42:59.134Z  INFO 77122 --- [SkillBasedVolunteerTaskAssignor] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 43 class path changes (0 additions, 43 deletions, 0 modifications)
+2025-12-29T15:42:59.332Z  INFO 77122 --- [SkillBasedVolunteerTaskAssignor] [Thread-4] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-12-29T15:42:59.426Z  WARN 77122 --- [SkillBasedVolunteerTaskAssignor] [Thread-4] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2025-12-29T15:42:59.428Z  INFO 77122 --- [SkillBasedVolunteerTaskAssignor] [Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-12-29T15:42:59.431Z  INFO 77122 --- [SkillBasedVolunteerTaskAssignor] [Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-12-29T15:43:01.425Z  INFO 77122 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.example.demo.DemoApplication         : Starting DemoApplication using Java 17.0.17 with PID 77122 (/home/coder/Workspace/demo/target/classes started by coder in /home/coder/Workspace/demo)
+2025-12-29T15:43:01.425Z DEBUG 77122 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.example.demo.DemoApplication         : Running with Spring Boot v3.2.0, Spring v6.1.1
+2025-12-29T15:43:01.426Z  INFO 77122 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
