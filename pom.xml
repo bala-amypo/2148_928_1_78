@@ -64,10 +64,11 @@
             <scope>runtime</scope>
         </dependency>
         
+        <!-- H2 Database - CHANGED: Removed test scope so it's available at runtime -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <scope>test</scope>
+            <scope>runtime</scope>
         </dependency>
         
         <!-- ========== JWT ========== -->
