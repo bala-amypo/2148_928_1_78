@@ -1,103 +1,80 @@
 package com.example.demo.controller;
 
 import com.example.demo.security.JwtTokenProvider;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import com.example.demo.dto.RegisterRequest;
+import com.example.demo.dto.LoginRequest;
+import com.example.demo.dto.AuthResponse;
+import com.example.demo.model.User;
+import com.example.demo.repository.UserRepository;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
-
-    @Autowired
-    private AuthenticationManager authenticationManager;
-
-    @Autowired
-    private JwtTokenProvider jwtTokenProvider;
-
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
-        try {
-            Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                    loginRequest.getUsername(),
-                    loginRequest.getPassword()
-                )
-            );
-
-            SecurityContextHolder.getContext().setAuthentication(authentication);
-            
-            String username = authentication.getName();
-            // FIXED: Changed from jwtTokenProvider.generateToken(authentication, expiration, username)
-            // to just jwtTokenProvider.generateToken(username)
-            String token = jwtTokenProvider.generateToken(username);
-            
-            Map<String, String> response = new HashMap<>();
-            response.put("token", token);
-            response.put("username", username);
-            
-            return ResponseEntity.ok(response);
-            
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Invalid username or password");
-        }
+    
+    private final AuthenticationManager authenticationManager;
+    private final JwtTokenProvider jwtTokenProvider;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+    
+    public AuthController(AuthenticationManager authenticationManager,
+                         JwtTokenProvider jwtTokenProvider,
+                         UserRepository userRepository,
+                         PasswordEncoder passwordEncoder) {
+        this.authenticationManager = authenticationManager;
+        this.jwtTokenProvider = jwtTokenProvider;
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
-
+    
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody RegisterRequest registerRequest) {
-        // Your registration logic here
-        // After successful registration, generate token
-        
-        try {
-            // Assuming registration is successful
-            String username = registerRequest.getUsername();
-            
-            // FIXED: Changed from jwtTokenProvider.generateToken(authentication, expiration, username)
-            // to just jwtTokenProvider.generateToken(username)
-            String token = jwtTokenProvider.generateToken(username);
-            
-            Map<String, String> response = new HashMap<>();
-            response.put("token", token);
-            response.put("username", username);
-            response.put("message", "User registered successfully");
-            
-            return ResponseEntity.ok(response);
-            
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Registration failed: " + e.getMessage());
+    public AuthResponse register(@RequestBody RegisterRequest request) {
+        // Check if user exists
+        if (userRepository.existsByUsername(request.getUsername())) {
+            throw new RuntimeException("Username already exists");
         }
+        
+        // Create new user
+        User user = new User();
+        user.setUsername(request.getUsername());
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setEmail(request.getEmail());
+        user.setRole(request.getRole());
+        
+        userRepository.save(user);
+        
+        // DON'T try to authenticate immediately - instead, manually create authentication
+        // Create authentication object manually
+        Authentication authentication = new UsernamePasswordAuthenticationToken(
+            request.getUsername(),
+            null,
+            user.getAuthorities()  // Use the user's authorities directly
+        );
+        
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        String token = jwtTokenProvider.generateToken(authentication);
+        
+        return new AuthResponse(token, "User registered successfully", user.getUsername());
     }
-
-    // Inner classes for request bodies
-    public static class LoginRequest {
-        private String username;
-        private String password;
-
-        // Getters and setters
-        public String getUsername() { return username; }
-        public void setUsername(String username) { this.username = username; }
-        public String getPassword() { return password; }
-        public void setPassword(String password) { this.password = password; }
-    }
-
-    public static class RegisterRequest {
-        private String username;
-        private String password;
-        private String email;
-
-        // Getters and setters
-        public String getUsername() { return username; }
-        public void setUsername(String username) { this.username = username; }
-        public String getPassword() { return password; }
-        public void setPassword(String password) { this.password = password; }
-        public String getEmail() { return email; }
-        public void setEmail(String email) { this.email = email; }
+    
+    @PostMapping("/login")
+    public AuthResponse login(@RequestBody LoginRequest request) {
+        // This should work as-is
+        Authentication authentication = authenticationManager.authenticate(
+            new UsernamePasswordAuthenticationToken(
+                request.getUsername(),
+                request.getPassword()
+            )
+        );
+        
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        String token = jwtTokenProvider.generateToken(authentication);
+        
+        return new AuthResponse(token, "Login successful", request.getUsername());
     }
 }

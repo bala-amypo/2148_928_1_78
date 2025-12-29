@@ -21,11 +21,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableMethodSecurity
 public class SecurityConfig {
 
-    private final JwtTokenFilter jwtTokenFilter;
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final UserDetailsService userDetailsService;
 
-    public SecurityConfig(JwtTokenFilter jwtTokenFilter, UserDetailsService userDetailsService) {
-        this.jwtTokenFilter = jwtTokenFilter;
+    public SecurityConfig(JwtAuthenticationFilter jwtAuthenticationFilter, 
+                         UserDetailsService userDetailsService) {
+        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
         this.userDetailsService = userDetailsService;
     }
 
@@ -34,22 +35,27 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**", 
-                                "/swagger-ui/**", 
-                                "/v3/api-docs/**", 
-                                "/api-docs/**",
-                                "/h2-console/**",
-                                "/hello",
-                                "/actuator/health",
-                                "/actuator/info").permitAll()
+                // Public endpoints
+                .requestMatchers("/api/auth/register").permitAll()
+                .requestMatchers("/api/auth/login").permitAll()
+                .requestMatchers("/swagger-ui/**").permitAll()
+                .requestMatchers("/v3/api-docs/**").permitAll()
+                .requestMatchers("/swagger-ui.html").permitAll()
+                .requestMatchers("/").permitAll()
+                .requestMatchers("/actuator/health").permitAll()
+                .requestMatchers("/h2-console/**").permitAll()
+                .requestMatchers("/error").permitAll()
+                
+                // All other endpoints require authentication
                 .anyRequest().authenticated()
             )
             .sessionManagement(session -> session
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             )
-            .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
+            .authenticationProvider(authenticationProvider())
+            .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
-        // For H2 Console (allow frames)
+        // Allow H2 console frames
         http.headers(headers -> headers.frameOptions(frameOptions -> frameOptions.sameOrigin()));
 
         return http.build();
