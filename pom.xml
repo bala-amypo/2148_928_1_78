@@ -295,7 +295,7 @@
                     <!-- Exclude integration tests -->
                     <excludes>
                         <exclude>**/*IT.java</exclude>
-                        <exclude>**/*IntegrationTest.java</include>
+                        <exclude>**/*IntegrationTest.java</exclude>  <!-- FIXED: Changed </include> to </exclude> -->
                         <exclude>**/*IntegrationTests.java</exclude>
                     </excludes>
                     
