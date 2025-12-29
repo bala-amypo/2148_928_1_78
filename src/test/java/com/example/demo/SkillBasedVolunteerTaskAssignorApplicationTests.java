@@ -100,55 +100,26 @@ public class SkillBasedVolunteerTaskAssignorApplicationTests extends AbstractTes
 
     @Test
     public void testCreateVolunteerProfile() {
-        // Create user using constructor or setters based on your User class
+        // Create user using your actual User class structure
         User user = new User();
-        // Try different common setter names
-        try {
-            user.setUsername("testuser");
-        } catch (NoSuchMethodError e) {
-            // Try alternative
-            user.setName("testuser");
-        }
+        user.setName("testuser");  // Correct: uses setName() not setUsername()
         user.setEmail("test@example.com");
-        
-        // Set password - try different methods
-        try {
-            user.setPassword(passwordEncoder.encode("password"));
-        } catch (NoSuchMethodError e) {
-            user.setEncodedPassword(passwordEncoder.encode("password"));
-        }
         
         User savedUser = userRepository.save(user);
         assertNotNull(savedUser.getId(), "Saved user should have an ID");
-        
-        // Check username - try different getter names
-        String username = "";
-        try {
-            username = savedUser.getUsername();
-        } catch (NoSuchMethodError e) {
-            username = savedUser.getName();
-        }
-        assertEquals(username, "testuser");
+        assertEquals(savedUser.getName(), "testuser");  // Correct: uses getName() not getUsername()
     }
 
     @Test
     public void testCustomUserDetailsServiceRegistersUser() {
         User user = new User();
-        try {
-            user.setUsername("testuser2");
-        } catch (NoSuchMethodError e) {
-            user.setName("testuser2");
-        }
+        user.setName("testuser2");  // Correct: uses setName()
         user.setEmail("test2@example.com");
-        
-        try {
-            user.setPassword("password123");
-        } catch (NoSuchMethodError e) {
-            user.setEncodedPassword(passwordEncoder.encode("password123"));
-        }
         
         User savedUser = userRepository.save(user);
         
+        // Note: Your CustomUserDetailsService probably loads by email, not name
+        // Check what field it actually uses
         UserDetails userDetails = customUserDetailsService.loadUserByUsername("testuser2");
         assertNotNull(userDetails);
         assertEquals(userDetails.getUsername(), "testuser2");
@@ -157,34 +128,14 @@ public class SkillBasedVolunteerTaskAssignorApplicationTests extends AbstractTes
     @Test
     public void testCreateVolunteerDuplicateEmailThrows() {
         User user1 = new User();
-        try {
-            user1.setUsername("user1");
-        } catch (NoSuchMethodError e) {
-            user1.setName("user1");
-        }
+        user1.setName("user1");
         user1.setEmail("duplicate@example.com");
-        
-        try {
-            user1.setPassword("pass1");
-        } catch (NoSuchMethodError e) {
-            user1.setEncodedPassword(passwordEncoder.encode("pass1"));
-        }
         
         userRepository.save(user1);
         
         User user2 = new User();
-        try {
-            user2.setUsername("user2");
-        } catch (NoSuchMethodError e) {
-            user2.setName("user2");
-        }
+        user2.setName("user2");
         user2.setEmail("duplicate@example.com");
-        
-        try {
-            user2.setPassword("pass2");
-        } catch (NoSuchMethodError e) {
-            user2.setEncodedPassword(passwordEncoder.encode("pass2"));
-        }
         
         // This might throw an exception if you have unique constraint on email
         // For now, we'll just save and test
@@ -196,18 +147,8 @@ public class SkillBasedVolunteerTaskAssignorApplicationTests extends AbstractTes
     public void testRegisterUserProducesValidToken() {
         // Create a test user
         User user = new User();
-        try {
-            user.setUsername("tokenuser");
-        } catch (NoSuchMethodError e) {
-            user.setName("tokenuser");
-        }
+        user.setName("tokenuser");
         user.setEmail("token@example.com");
-        
-        try {
-            user.setPassword(passwordEncoder.encode("password"));
-        } catch (NoSuchMethodError e) {
-            user.setEncodedPassword(passwordEncoder.encode("password"));
-        }
         
         userRepository.save(user);
         
@@ -268,5 +209,16 @@ public class SkillBasedVolunteerTaskAssignorApplicationTests extends AbstractTes
         softAssert.assertTrue(true, "Second assertion");
         softAssert.assertNotNull("test", "Third assertion");
         softAssert.assertAll();
+    }
+
+    @Test
+    public void testPasswordEncoderWorks() {
+        String rawPassword = "password123";
+        String encodedPassword = passwordEncoder.encode(rawPassword);
+        
+        assertNotNull(encodedPassword, "Encoded password should not be null");
+        assertTrue(encodedPassword.length() > 0, "Encoded password should not be empty");
+        assertTrue(passwordEncoder.matches(rawPassword, encodedPassword), 
+                  "Password encoder should match raw and encoded passwords");
     }
 }
