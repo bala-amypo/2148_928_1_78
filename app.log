@@ -364,3 +364,150 @@
 2025-12-29T15:22:49.211Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-10] c.e.d.security.JwtAuthenticationFilter   : Skipping JWT filter for public endpoint: /swagger-ui/swagger-initializer.js
 2025-12-29T15:22:49.211Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
 2025-12-29T15:22:49.213Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/swagger-initializer.js
+2025-12-29T15:22:55.220Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /v3/api-docs/swagger-config
+2025-12-29T15:22:55.221Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/favicon-32x32.png
+2025-12-29T15:22:55.222Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-8] c.e.d.security.JwtAuthenticationFilter   : ══════════════════════════════════════════════════════════
+2025-12-29T15:22:55.222Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-8] c.e.d.security.JwtAuthenticationFilter   : JWT FILTER START - GET /v3/api-docs/swagger-config
+2025-12-29T15:22:55.222Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-8] c.e.d.security.JwtAuthenticationFilter   : Skipping JWT filter for public endpoint: /v3/api-docs/swagger-config
+2025-12-29T15:22:55.223Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-29T15:22:55.223Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] c.e.d.security.JwtAuthenticationFilter   : ══════════════════════════════════════════════════════════
+2025-12-29T15:22:55.223Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] c.e.d.security.JwtAuthenticationFilter   : JWT FILTER START - GET /swagger-ui/favicon-32x32.png
+2025-12-29T15:22:55.223Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] c.e.d.security.JwtAuthenticationFilter   : Skipping JWT filter for public endpoint: /swagger-ui/favicon-32x32.png
+2025-12-29T15:22:55.223Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-29T15:22:55.227Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/favicon-32x32.png
+2025-12-29T15:22:55.228Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /v3/api-docs/swagger-config
+2025-12-29T15:22:55.626Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /v3/api-docs
+2025-12-29T15:22:55.627Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] c.e.d.security.JwtAuthenticationFilter   : ══════════════════════════════════════════════════════════
+2025-12-29T15:22:55.627Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] c.e.d.security.JwtAuthenticationFilter   : JWT FILTER START - GET /v3/api-docs
+2025-12-29T15:22:55.627Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] c.e.d.security.JwtAuthenticationFilter   : Skipping JWT filter for public endpoint: /v3/api-docs
+2025-12-29T15:22:55.628Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-29T15:22:55.630Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /v3/api-docs
+2025-12-29T15:24:09.037Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 43 class path changes (0 additions, 43 deletions, 0 modifications)
+2025-12-29T15:24:09.230Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [Thread-4] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-12-29T15:24:09.321Z  WARN 75010 --- [SkillBasedVolunteerTaskAssignor] [Thread-4] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2025-12-29T15:24:09.323Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-12-29T15:24:09.328Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [Thread-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2025-12-29T15:24:11.621Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.example.demo.DemoApplication         : Starting DemoApplication using Java 17.0.17 with PID 75010 (/home/coder/Workspace/demo/target/classes started by coder in /home/coder/Workspace/demo)
+2025-12-29T15:24:11.621Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.example.demo.DemoApplication         : Running with Spring Boot v3.2.0, Spring v6.1.1
+2025-12-29T15:24:11.622Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-12-29T15:24:22.627Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-29T15:24:22.629Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2025-12-29T15:24:24.847Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9001 (http)
+2025-12-29T15:24:24.848Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-29T15:24:24.928Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-12-29T15:24:25.030Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-29T15:24:25.031Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 13404 ms
+2025-12-29T15:24:26.331Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-12-29T15:24:26.432Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:testdb user=ROOT
+2025-12-29T15:24:26.433Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-12-29T15:24:26.433Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-12-29T15:24:27.824Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-29T15:24:27.827Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-12-29T15:24:34.832Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-29T15:24:34.836Z  WARN 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-12-29T15:24:34.924Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-29T15:24:34.925Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-29T15:24:48.126Z  WARN 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 7167b17d-23de-4a16-9204-94bfbde1fc04
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-12-29T15:24:49.324Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-12-29T15:24:49.932Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6caac5e8, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4f9bd79b, org.springframework.security.web.context.SecurityContextHolderFilter@549e0524, org.springframework.security.web.header.HeaderWriterFilter@c2f6f9a, org.springframework.web.filter.CorsFilter@9be883b, org.springframework.security.web.csrf.CsrfFilter@5ce24509, org.springframework.security.web.authentication.logout.LogoutFilter@e788652, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@766c56e4, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@111e7e41, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@5821f033, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@325ad00f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@64eb4cf5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1ef1091e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@629eeb5a, org.springframework.security.web.access.ExceptionTranslationFilter@18cfaddb, org.springframework.security.web.access.intercept.AuthorizationFilter@7ec7b6c2]
+2025-12-29T15:24:52.321Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-12-29T15:24:52.628Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9001 (http) with context path ''
+2025-12-29T15:24:52.825Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.example.demo.DemoApplication         : Started DemoApplication in 41.695 seconds (process running for 256.092)
+2025-12-29T15:24:53.022Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation delta:
+
+
+==========================
+CONDITION EVALUATION DELTA
+==========================
+
+
+Positive matches:
+-----------------
+
+   ManagementWebSecurityAutoConfiguration matched:
+      - found 'session' scope (OnWebApplicationCondition)
+      - AllNestedConditions 2 matched 0 did not; NestedCondition on DefaultWebSecurityCondition.Beans @ConditionalOnMissingBean (types: org.springframework.security.web.SecurityFilterChain; SearchStrategy: all) did not find any beans; NestedCondition on DefaultWebSecurityCondition.Classes @ConditionalOnClass found required classes 'org.springframework.security.web.SecurityFilterChain', 'org.springframework.security.config.annotation.web.builders.HttpSecurity' (DefaultWebSecurityCondition)
+
+   SpringBootWebSecurityConfiguration.WebSecurityEnablerConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.security.config.annotation.web.configuration.EnableWebSecurity' (OnClassCondition)
+      - @ConditionalOnMissingBean (names: springSecurityFilterChain; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   UserDetailsServiceAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.security.authentication.AuthenticationManager'; @ConditionalOnMissingClass did not find unwanted classes 'org.springframework.security.oauth2.client.registration.ClientRegistrationRepository', 'org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector', 'org.springframework.security.saml2.provider.service.registration.RelyingPartyRegistrationRepository' (OnClassCondition)
+      - @ConditionalOnBean (types: org.springframework.security.config.annotation.ObjectPostProcessor; SearchStrategy: all) found bean 'objectPostProcessor'; @ConditionalOnMissingBean (types: org.springframework.security.authentication.AuthenticationManager,org.springframework.security.authentication.AuthenticationProvider,org.springframework.security.core.userdetails.UserDetailsService,org.springframework.security.authentication.AuthenticationManagerResolver,org.springframework.security.oauth2.jwt.JwtDecoder; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+
+Negative matches:
+-----------------
+
+    None
+
+
+Exclusions:
+-----------
+
+    None
+
+
+Unconditional classes:
+----------------------
+
+    None
+
+
+
+2025-12-29T15:24:54.039Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 43 class path changes (43 additions, 0 deletions, 0 modifications)
+2025-12-29T15:24:54.230Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [Thread-6] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-12-29T15:24:54.232Z  WARN 75010 --- [SkillBasedVolunteerTaskAssignor] [Thread-6] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2025-12-29T15:24:54.233Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2025-12-29T15:24:54.326Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2025-12-29T15:24:55.627Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.example.demo.DemoApplication         : Starting DemoApplication using Java 17.0.17 with PID 75010 (/home/coder/Workspace/demo/target/classes started by coder in /home/coder/Workspace/demo)
+2025-12-29T15:24:55.628Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.example.demo.DemoApplication         : Running with Spring Boot v3.2.0, Spring v6.1.1
+2025-12-29T15:24:55.628Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-12-29T15:24:56.747Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-29T15:24:56.834Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 86 ms. Found 6 JPA repository interfaces.
+2025-12-29T15:24:57.729Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9001 (http)
+2025-12-29T15:24:57.730Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-29T15:24:57.730Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-12-29T15:24:57.744Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-29T15:24:57.745Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2114 ms
+2025-12-29T15:24:58.053Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2025-12-29T15:24:58.057Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection conn20: url=jdbc:h2:mem:testdb user=ROOT
+2025-12-29T15:24:58.057Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2025-12-29T15:24:58.057Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-12-29T15:24:58.240Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] c.e.demo.security.JwtTokenProvider       : 🔑 Initializing JwtTokenProvider...
+2025-12-29T15:24:58.242Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] c.e.demo.security.JwtTokenProvider       : 🔑 JWT Secret length: 70
+2025-12-29T15:24:58.243Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] c.e.demo.security.JwtTokenProvider       : 🔑 JWT Expiration (ms): 86400000
+2025-12-29T15:24:58.244Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] c.e.demo.security.JwtTokenProvider       : ✅ Using provided secret key (length: 70)
+2025-12-29T15:24:58.244Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] c.e.demo.security.JwtTokenProvider       : ✅ JwtTokenProvider initialized successfully
+2025-12-29T15:24:58.365Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] c.e.d.security.JwtAuthenticationFilter   : Filter 'jwtAuthenticationFilter' configured for use
+2025-12-29T15:24:58.422Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] c.example.demo.security.JwtTokenFilter   : Filter 'jwtTokenFilter' configured for use
+2025-12-29T15:24:58.564Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-29T15:24:58.567Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-12-29T15:24:58.629Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-29T15:24:58.632Z  WARN 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-12-29T15:25:01.929Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-29T15:25:01.935Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : create table assignment_evaluation_records (id bigint generated by default as identity, assignment_id bigint not null, evaluated_at timestamp(6) not null, feedback varchar(255), rating integer not null, primary key (id))
+2025-12-29T15:25:01.939Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : create table task_assignment_records (id bigint generated by default as identity, assigned_at timestamp(6) not null, completed_at timestamp(6), status varchar(255), task_id bigint not null, volunteer_id bigint not null, primary key (id))
+2025-12-29T15:25:02.023Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : create table task_records (id bigint generated by default as identity, created_at timestamp(6) not null, priority varchar(255) not null, required_skill varchar(255) not null, required_skill_level varchar(255) not null, status varchar(255), task_code varchar(255) not null, task_name varchar(255) not null, updated_at timestamp(6), primary key (id))
+2025-12-29T15:25:02.120Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : create table users (id bigint generated by default as identity, email varchar(255), password varchar(255) not null, role varchar(255), username varchar(255) not null, primary key (id))
+2025-12-29T15:25:02.125Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : create table volunteer_profiles (id bigint generated by default as identity, availability_status varchar(255), created_at timestamp(6) not null, email varchar(255) not null, full_name varchar(255) not null, phone varchar(255) not null, updated_at timestamp(6), volunteer_id varchar(255) not null, primary key (id))
+2025-12-29T15:25:02.131Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : create table volunteer_skill_records (id bigint generated by default as identity, certified boolean, created_at timestamp(6) not null, skill_level varchar(255) not null, skill_name varchar(255) not null, updated_at timestamp(6), volunteer_id bigint not null, primary key (id))
+2025-12-29T15:25:02.235Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists task_records drop constraint if exists UK_gdl54rx67o6vk0aydtbjh2wyp
+2025-12-29T15:25:02.322Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists task_records add constraint UK_gdl54rx67o6vk0aydtbjh2wyp unique (task_code)
+2025-12-29T15:25:02.324Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists users drop constraint if exists UK_6dotkott2kjsp8vw4d0m25fb7
+2025-12-29T15:25:02.326Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists users add constraint UK_6dotkott2kjsp8vw4d0m25fb7 unique (email)
+2025-12-29T15:25:02.329Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists users drop constraint if exists UK_r43af9ap4edm43mmtq01oddj6
+2025-12-29T15:25:02.331Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists users add constraint UK_r43af9ap4edm43mmtq01oddj6 unique (username)
+2025-12-29T15:25:02.333Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists volunteer_profiles drop constraint if exists UK_ejk0h5xdl4ujp5t07mh7y9j93
+2025-12-29T15:25:02.335Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists volunteer_profiles add constraint UK_ejk0h5xdl4ujp5t07mh7y9j93 unique (email)
+2025-12-29T15:25:02.337Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists volunteer_profiles drop constraint if exists UK_mpbm6dsummhwp7em05vv0m25d
+2025-12-29T15:25:02.338Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists volunteer_profiles add constraint UK_mpbm6dsummhwp7em05vv0m25d unique (phone)
+2025-12-29T15:25:02.423Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists volunteer_profiles drop constraint if exists UK_87gyc4n3kbuxboy1bqtlpoq1x
+2025-12-29T15:25:02.424Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists volunteer_profiles add constraint UK_87gyc4n3kbuxboy1bqtlpoq1x unique (volunteer_id)
+2025-12-29T15:25:02.427Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
