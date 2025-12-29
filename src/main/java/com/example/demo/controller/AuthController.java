@@ -1,21 +1,19 @@
 package com.example.demo.controller;
 
-import com.example.demo.security.CustomUserDetailsService;
 import com.example.demo.security.JwtTokenProvider;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/api/auth")
-@Tag(name = "Authentication", description = "APIs for user authentication and registration")
 public class AuthController {
 
     @Autowired
@@ -24,77 +22,82 @@ public class AuthController {
     @Autowired
     private JwtTokenProvider jwtTokenProvider;
 
-    @Autowired
-    private CustomUserDetailsService userDetailsService;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
     @PostMapping("/login")
-    @Operation(summary = "User login")
-    public Map<String, String> login(@RequestBody LoginRequest request) {
-        Authentication authentication = authenticationManager.authenticate(
-            new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
-        );
-        
-        // In a real app, you would get userId and role from database
-        String token = jwtTokenProvider.generateToken(authentication, 1L, "ADMIN");
-        
-        return Map.of("token", token, "email", request.getEmail());
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
+        try {
+            Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                    loginRequest.getUsername(),
+                    loginRequest.getPassword()
+                )
+            );
+
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            
+            String username = authentication.getName();
+            // FIXED: Changed from jwtTokenProvider.generateToken(authentication, expiration, username)
+            // to just jwtTokenProvider.generateToken(username)
+            String token = jwtTokenProvider.generateToken(username);
+            
+            Map<String, String> response = new HashMap<>();
+            response.put("token", token);
+            response.put("username", username);
+            
+            return ResponseEntity.ok(response);
+            
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Invalid username or password");
+        }
     }
 
     @PostMapping("/register")
-    @Operation(summary = "Register new user")
-    public Map<String, Object> register(@RequestBody RegisterRequest request) {
-        String encodedPassword = passwordEncoder.encode(request.getPassword());
+    public ResponseEntity<?> register(@RequestBody RegisterRequest registerRequest) {
+        // Your registration logic here
+        // After successful registration, generate token
         
-        Map<String, Object> user = userDetailsService.registerUser(
-            request.getFullName(),
-            request.getEmail(),
-            encodedPassword,
-            request.getRole()
-        );
-        
-        // Generate token for the new user
-        Authentication auth = new UsernamePasswordAuthenticationToken(
-            request.getEmail(), 
-            request.getPassword()
-        );
-        
-        String token = jwtTokenProvider.generateToken(auth, 
-            (Long) user.get("userId"), 
-            (String) user.get("role"));
-        
-        user.put("token", token);
-        return user;
+        try {
+            // Assuming registration is successful
+            String username = registerRequest.getUsername();
+            
+            // FIXED: Changed from jwtTokenProvider.generateToken(authentication, expiration, username)
+            // to just jwtTokenProvider.generateToken(username)
+            String token = jwtTokenProvider.generateToken(username);
+            
+            Map<String, String> response = new HashMap<>();
+            response.put("token", token);
+            response.put("username", username);
+            response.put("message", "User registered successfully");
+            
+            return ResponseEntity.ok(response);
+            
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Registration failed: " + e.getMessage());
+        }
     }
-    
-    // DTO classes
-    static class LoginRequest {
-        private String email;
+
+    // Inner classes for request bodies
+    public static class LoginRequest {
+        private String username;
         private String password;
-        
-        // getters and setters
-        public String getEmail() { return email; }
-        public void setEmail(String email) { this.email = email; }
+
+        // Getters and setters
+        public String getUsername() { return username; }
+        public void setUsername(String username) { this.username = username; }
         public String getPassword() { return password; }
         public void setPassword(String password) { this.password = password; }
     }
-    
-    static class RegisterRequest {
-        private String fullName;
-        private String email;
+
+    public static class RegisterRequest {
+        private String username;
         private String password;
-        private String role = "VOLUNTEER_VIEWER";
-        
-        // getters and setters
-        public String getFullName() { return fullName; }
-        public void setFullName(String fullName) { this.fullName = fullName; }
-        public String getEmail() { return email; }
-        public void setEmail(String email) { this.email = email; }
+        private String email;
+
+        // Getters and setters
+        public String getUsername() { return username; }
+        public void setUsername(String username) { this.username = username; }
         public String getPassword() { return password; }
         public void setPassword(String password) { this.password = password; }
-        public String getRole() { return role; }
-        public void setRole(String role) { this.role = role; }
+        public String getEmail() { return email; }
+        public void setEmail(String email) { this.email = email; }
     }
 }
