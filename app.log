@@ -327,3 +327,40 @@
 2025-12-29T15:21:55.722Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] c.e.d.security.JwtAuthenticationFilter   : Skipping JWT filter for public endpoint: /v3/api-docs
 2025-12-29T15:21:55.723Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
 2025-12-29T15:21:55.725Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /v3/api-docs
+2025-12-29T15:22:47.626Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/index.html
+2025-12-29T15:22:47.629Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-4] c.e.d.security.JwtAuthenticationFilter   : ══════════════════════════════════════════════════════════
+2025-12-29T15:22:47.629Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-4] c.e.d.security.JwtAuthenticationFilter   : JWT FILTER START - GET /swagger-ui/index.html
+2025-12-29T15:22:47.629Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-4] c.e.d.security.JwtAuthenticationFilter   : Skipping JWT filter for public endpoint: /swagger-ui/index.html
+2025-12-29T15:22:47.631Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-29T15:22:47.634Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/index.html
+2025-12-29T15:22:47.927Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/swagger-ui.css
+2025-12-29T15:22:47.928Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/swagger-ui-bundle.js
+2025-12-29T15:22:47.929Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-6] c.e.d.security.JwtAuthenticationFilter   : ══════════════════════════════════════════════════════════
+2025-12-29T15:22:47.929Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-6] c.e.d.security.JwtAuthenticationFilter   : JWT FILTER START - GET /swagger-ui/swagger-ui.css
+2025-12-29T15:22:47.929Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-6] c.e.d.security.JwtAuthenticationFilter   : Skipping JWT filter for public endpoint: /swagger-ui/swagger-ui.css
+2025-12-29T15:22:47.930Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-29T15:22:47.930Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-9] c.e.d.security.JwtAuthenticationFilter   : ══════════════════════════════════════════════════════════
+2025-12-29T15:22:47.930Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-9] c.e.d.security.JwtAuthenticationFilter   : JWT FILTER START - GET /swagger-ui/swagger-ui-bundle.js
+2025-12-29T15:22:47.930Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-9] c.e.d.security.JwtAuthenticationFilter   : Skipping JWT filter for public endpoint: /swagger-ui/swagger-ui-bundle.js
+2025-12-29T15:22:47.931Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/index.css
+2025-12-29T15:22:47.932Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/swagger-ui.css
+2025-12-29T15:22:47.933Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-5] c.e.d.security.JwtAuthenticationFilter   : ══════════════════════════════════════════════════════════
+2025-12-29T15:22:47.933Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-5] c.e.d.security.JwtAuthenticationFilter   : JWT FILTER START - GET /swagger-ui/index.css
+2025-12-29T15:22:47.933Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-5] c.e.d.security.JwtAuthenticationFilter   : Skipping JWT filter for public endpoint: /swagger-ui/index.css
+2025-12-29T15:22:47.933Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-29T15:22:47.931Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-29T15:22:47.936Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/swagger-ui-bundle.js
+2025-12-29T15:22:48.024Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/index.css
+2025-12-29T15:22:48.522Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 52693 ms
+2025-12-29T15:22:48.929Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/swagger-ui-standalone-preset.js
+2025-12-29T15:22:48.931Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-7] c.e.d.security.JwtAuthenticationFilter   : ══════════════════════════════════════════════════════════
+2025-12-29T15:22:48.931Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-7] c.e.d.security.JwtAuthenticationFilter   : JWT FILTER START - GET /swagger-ui/swagger-ui-standalone-preset.js
+2025-12-29T15:22:48.931Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-7] c.e.d.security.JwtAuthenticationFilter   : Skipping JWT filter for public endpoint: /swagger-ui/swagger-ui-standalone-preset.js
+2025-12-29T15:22:48.932Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-29T15:22:48.934Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/swagger-ui-standalone-preset.js
+2025-12-29T15:22:49.209Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/swagger-initializer.js
+2025-12-29T15:22:49.210Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-10] c.e.d.security.JwtAuthenticationFilter   : ══════════════════════════════════════════════════════════
+2025-12-29T15:22:49.211Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-10] c.e.d.security.JwtAuthenticationFilter   : JWT FILTER START - GET /swagger-ui/swagger-initializer.js
+2025-12-29T15:22:49.211Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-10] c.e.d.security.JwtAuthenticationFilter   : Skipping JWT filter for public endpoint: /swagger-ui/swagger-initializer.js
+2025-12-29T15:22:49.211Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-29T15:22:49.213Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/swagger-initializer.js
