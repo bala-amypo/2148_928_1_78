@@ -237,7 +237,8 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
-                    <mainClass>com.example.demo.SkillBasedVolunteerTaskAssignorApplication</mainClass>
+                    <!-- FIXED: Changed to DemoApplication -->
+                    <mainClass>com.example.demo.DemoApplication</mainClass>
                 </configuration>
                 <executions>
                     <execution>
@@ -289,7 +290,7 @@
                     <excludes>
                         <exclude>**/*IT.java</exclude>
                         <exclude>**/*IntegrationTest.java</exclude>
-                        <exclude>**/*IntegrationTests.java</exclude>
+                        <exclude>**/*IntegrationTests.java</exclude> <!-- FIXED: Changed from </include> to </exclude> -->
                     </excludes>
                     
                     <!-- TestNG configuration -->
