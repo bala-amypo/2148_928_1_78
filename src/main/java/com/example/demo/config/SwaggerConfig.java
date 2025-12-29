@@ -19,18 +19,18 @@ public class SwaggerConfig {
     public OpenAPI customOpenAPI() {
         // Define servers
         Server localServer = new Server();
-        localServer.setUrl("http://localhost:9001/api");
+        localServer.setUrl("http://localhost:8080");
         localServer.setDescription("Local Development Server");
         
         Server customServer = new Server();
-        customServer.setUrl("https://9162.408procr.amypo.ai/");
-        customServer.setDescription("Custom Deployment Server");
+        customServer.setUrl("https://9162.408procr.amypo.ai");
+        customServer.setDescription("Production Deployment Server");
 
         // Contact information
         Contact contact = new Contact();
-        contact.setName("Demo Application");
+        contact.setName("Skill-Based Volunteer Task Assignor");
         contact.setEmail("support@example.com");
-        contact.setUrl("https://9162.408procr.amypo.ai/");
+        contact.setUrl("https://9162.408procr.amypo.ai");
 
         // License information
         License license = new License()
@@ -39,28 +39,30 @@ public class SwaggerConfig {
 
         // API Info
         Info info = new Info()
-                .title("Volunteer Task Assignor API")
+                .title("Skill-Based Volunteer Task Assignor API")
                 .version("1.0.0")
                 .description("""
-                    ## Skill-Based Volunteer Task Assignment System
+                    ## REST API for Volunteer Task Management System
                     
-                    This API provides endpoints for managing volunteers, tasks, assignments, and evaluations.
+                    This API manages volunteers, their skills, tasks, assignments, and evaluations.
                     
-                    ### Features:
-                    - Volunteer profile management
-                    - Skill tracking and matching
-                    - Task assignment based on skills
-                    - Assignment evaluation and feedback
+                    ### Key Features:
+                    - **Volunteer Management**: Register, update, and manage volunteer profiles
+                    - **Skill Tracking**: Record and match volunteer skills with task requirements
+                    - **Task Assignment**: Automatically assign tasks based on skill matching
+                    - **Evaluation System**: Rate and provide feedback on completed assignments
+                    - **JWT Security**: Secure authentication and authorization
                     
                     ### Authentication:
                     - JWT token based authentication
                     - Roles: ADMIN, COORDINATOR, VOLUNTEER_VIEWER
                     
-                    ### API Documentation:
-                    - Swagger UI: https://9162.408procr.amypo.ai/swagger-ui.html
-                    - OpenAPI Spec: https://9162.408procr.amypo.ai/v3/api-docs
+                    ### Access Points:
+                    - **API Documentation**: https://9162.408procr.amypo.ai/swagger-ui.html
+                    - **OpenAPI Spec**: https://9162.408procr.amypo.ai/v3/api-docs
+                    - **Health Check**: https://9162.408procr.amypo.ai/actuator/health
                     """)
-                .termsOfService("https://example.com/terms")
+                .termsOfService("https://9162.408procr.amypo.ai/terms")
                 .contact(contact)
                 .license(license);
 
@@ -70,7 +72,7 @@ public class SwaggerConfig {
                 .scheme("bearer")
                 .bearerFormat("JWT")
                 .name("Authorization")
-                .description("Enter JWT token")
+                .description("Enter JWT token in format: Bearer {token}")
                 .in(SecurityScheme.In.HEADER);
 
         return new OpenAPI()
