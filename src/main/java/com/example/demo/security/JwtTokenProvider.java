@@ -8,7 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;   // ✅ FIXED IMPORT
 import javax.crypto.SecretKey;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -22,7 +22,7 @@ public class JwtTokenProvider {
     private long jwtExpirationInMs;
 
     /**
-     * Automatically generates a secure key for HS512
+     * Initializes a secure HS512 key
      * (Fixes 392-bit error permanently)
      */
     @PostConstruct
@@ -39,9 +39,7 @@ public class JwtTokenProvider {
                 now.getTime() + (expiration != null ? expiration : jwtExpirationInMs)
         );
 
-        String username = authentication.getName();
-
-        Claims claims = Jwts.claims().setSubject(username);
+        Claims claims = Jwts.claims().setSubject(authentication.getName());
 
         if (role != null && !role.isEmpty()) {
             claims.put("role", role);
@@ -61,10 +59,6 @@ public class JwtTokenProvider {
                 .setExpiration(expiryDate)
                 .signWith(secretKey, SignatureAlgorithm.HS512)
                 .compact();
-    }
-
-    public String generateToken(Authentication authentication, long expiration, String role) {
-        return generateToken(authentication, Long.valueOf(expiration), role);
     }
 
     public String generateToken(String username) {
