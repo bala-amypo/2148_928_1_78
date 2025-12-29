@@ -202,13 +202,6 @@
             <scope>test</scope>
         </dependency>
         
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-inline</artifactId>
-            <version>${mockito.version}</version>
-            <scope>test</scope>
-        </dependency>
-        
         <!-- AssertJ -->
         <dependency>
             <groupId>org.assertj</groupId>
@@ -295,7 +288,7 @@
                     <!-- Exclude integration tests -->
                     <excludes>
                         <exclude>**/*IT.java</exclude>
-                        <exclude>**/*IntegrationTest.java</exclude>  <!-- FIXED: Changed </include> to </exclude> -->
+                        <exclude>**/*IntegrationTest.java</exclude>
                         <exclude>**/*IntegrationTests.java</exclude>
                     </excludes>
                     
