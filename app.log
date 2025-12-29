@@ -565,3 +565,27 @@ Unconditional classes:
 
 
 
+2025-12-29T15:26:08.971Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-29T15:26:17.853Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-12-29T15:26:17.856Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2025-12-29T15:26:17.858Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /api/auth/register
+2025-12-29T15:26:30.628Z  WARN 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] o.s.w.s.h.HandlerMappingIntrospector     : Cache miss for REQUEST dispatch to '/api/auth/register' (previous null). Performing CorsConfiguration lookup. This is logged once only at WARN level, and every time at TRACE.
+2025-12-29T15:26:30.630Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] c.e.d.security.JwtAuthenticationFilter   : ══════════════════════════════════════════════════════════
+2025-12-29T15:26:30.635Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] c.e.d.security.JwtAuthenticationFilter   : JWT FILTER START - POST /api/auth/register
+2025-12-29T15:26:30.635Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] c.e.d.security.JwtAuthenticationFilter   : Skipping JWT filter for public endpoint: /api/auth/register
+2025-12-29T15:26:30.636Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-29T15:26:30.637Z  WARN 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] o.s.w.s.h.HandlerMappingIntrospector     : Cache miss for REQUEST dispatch to '/api/auth/register' (previous null). Performing MatchableHandlerMapping lookup. This is logged once only at WARN level, and every time at TRACE.
+2025-12-29T15:26:30.639Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /api/auth/register
+2025-12-29T15:27:03.828Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] org.hibernate.SQL                        : select u1_0.id from users u1_0 where u1_0.username=? fetch first ? rows only
+2025-12-29T15:27:36.126Z DEBUG 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] org.hibernate.SQL                        : insert into users (email,password,role,username,id) values (?,?,?,?,default)
+2025-12-29T15:28:01.028Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] c.e.demo.security.JwtTokenProvider       : 🔐 Generating JWT token for user: john_doe
+2025-12-29T15:28:01.030Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] c.e.demo.security.JwtTokenProvider       :    Current time: Mon Dec 29 15:28:01 UTC 2025
+2025-12-29T15:28:01.030Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] c.e.demo.security.JwtTokenProvider       :    Expiry time: Tue Dec 30 15:28:01 UTC 2025
+2025-12-29T15:28:01.031Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] c.e.demo.security.JwtTokenProvider       :    Expires in: 1440 minutes
+2025-12-29T15:28:01.238Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] c.e.demo.security.JwtTokenProvider       :    Authorities added: [ROLE_user]
+2025-12-29T15:28:01.333Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] c.e.demo.security.JwtTokenProvider       : ✅ Token generated successfully
+2025-12-29T15:28:01.333Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] c.e.demo.security.JwtTokenProvider       :    Token length: 231
+2025-12-29T15:28:10.859Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-12-29T15:28:18.232Z  WARN 75010 --- [SkillBasedVolunteerTaskAssignor] [SpringApplicationShutdownHook] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2025-12-29T15:28:18.234Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2025-12-29T15:28:18.533Z  INFO 75010 --- [SkillBasedVolunteerTaskAssignor] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
