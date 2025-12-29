@@ -19,11 +19,11 @@ public class SwaggerConfig {
     public OpenAPI customOpenAPI() {
         // Define servers
         Server localServer = new Server();
-        localServer.setUrl("http://localhost:8080");
+        localServer.setUrl("http://localhost:9001");
         localServer.setDescription("Local Development Server");
         
         Server customServer = new Server();
-        customServer.setUrl("https://9162.408procr.amypo.ai");
+        customServer.setUrl("https://9162.408procr.amypo.ai/");
         customServer.setDescription("Production Deployment Server");
 
         // Contact information
