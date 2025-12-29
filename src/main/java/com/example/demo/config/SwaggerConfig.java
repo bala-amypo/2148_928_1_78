@@ -1,9 +1,7 @@
 package com.example.demo.config;
 
 import io.swagger.v3.oas.models.OpenAPI;
-import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
-import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.servers.Server;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
@@ -17,25 +15,10 @@ public class SwaggerConfig {
 
     @Bean
     public OpenAPI customOpenAPI() {
-        // Define servers
-        Server localServer = new Server();
-        localServer.setUrl("http://localhost:9001");
-        localServer.setDescription("Local Development Server");
-        
-        Server customServer = new Server();
-        customServer.setUrl("https://9162.408procr.amypo.ai/");
-        customServer.setDescription("Production Deployment Server");
-
-        // Contact information
-        Contact contact = new Contact();
-        contact.setName("Skill-Based Volunteer Task Assignor");
-        contact.setEmail("support@example.com");
-        contact.setUrl("https://9162.408procr.amypo.ai");
-
-        // License information
-        License license = new License()
-                .name("Apache 2.0")
-                .url("https://www.apache.org/licenses/LICENSE-2.0.html");
+        // Define server with the specified URL
+        Server server = new Server();
+        server.setUrl("https://9162.408procr.amypo.ai/");
+        server.setDescription("API Server");
 
         // API Info
         Info info = new Info()
@@ -56,15 +39,7 @@ public class SwaggerConfig {
                     ### Authentication:
                     - JWT token based authentication
                     - Roles: ADMIN, COORDINATOR, VOLUNTEER_VIEWER
-                    
-                    ### Access Points:
-                    - **API Documentation**: https://9162.408procr.amypo.ai/swagger-ui.html
-                    - **OpenAPI Spec**: https://9162.408procr.amypo.ai/v3/api-docs
-                    - **Health Check**: https://9162.408procr.amypo.ai/actuator/health
-                    """)
-                .termsOfService("https://9162.408procr.amypo.ai/terms")
-                .contact(contact)
-                .license(license);
+                    """);
 
         // JWT Security Scheme
         SecurityScheme securityScheme = new SecurityScheme()
@@ -77,7 +52,7 @@ public class SwaggerConfig {
 
         return new OpenAPI()
                 .info(info)
-                .servers(List.of(localServer, customServer))
+                .servers(List.of(server))
                 .addSecurityItem(new SecurityRequirement().addList("bearerAuth"))
                 .components(new io.swagger.v3.oas.models.Components()
                         .addSecuritySchemes("bearerAuth", securityScheme));
