@@ -868,10 +868,7 @@ public class SkillBasedVolunteerTaskAssignorApplicationTests {
 
         Assert.assertEquals(((Number) claims.get("userId")).longValue(), 42L);
         Assert.assertEquals(claims.get("role"), "ADMIN");
-        
-        // FIXED: Get the username properly from the token
-        String username = jwtTokenProvider.getUsernameFromToken(token);
-        Assert.assertEquals(username, "claims@example.com");
+        Assert.assertEquals(claims.get("email"), "claims@example.com");
     }
 
     @Test(priority = 56, groups = "security")
