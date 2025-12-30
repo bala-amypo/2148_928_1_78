@@ -3296,3 +3296,18 @@ java.lang.RuntimeException: Username already exists
 2025-12-30T05:06:18.776Z DEBUG 108889 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
 2025-12-30T05:06:18.778Z DEBUG 108889 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /v3/api-docs
 2025-12-30T05:06:21.030Z  INFO 108889 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 2209 ms
+2025-12-30T05:07:06.222Z DEBUG 108889 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] o.s.security.web.FilterChainProxy        : Securing POST /api/auth/register
+2025-12-30T05:07:06.225Z  INFO 108889 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] c.e.d.security.JwtAuthenticationFilter   : ══════════════════════════════════════════════════════════
+2025-12-30T05:07:06.225Z  INFO 108889 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] c.e.d.security.JwtAuthenticationFilter   : JWT FILTER START - POST /api/auth/register
+2025-12-30T05:07:06.225Z  INFO 108889 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] c.e.d.security.JwtAuthenticationFilter   : Skipping JWT filter for public endpoint: /api/auth/register
+2025-12-30T05:07:06.225Z DEBUG 108889 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-30T05:07:06.227Z DEBUG 108889 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] o.s.security.web.FilterChainProxy        : Secured POST /api/auth/register
+2025-12-30T05:07:06.822Z DEBUG 108889 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] org.hibernate.SQL                        : select u1_0.id from users u1_0 where u1_0.username=? fetch first ? rows only
+2025-12-30T05:07:07.340Z DEBUG 108889 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] org.hibernate.SQL                        : insert into users (email,password,role,username,id) values (?,?,?,?,default)
+2025-12-30T05:07:07.454Z  INFO 108889 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] c.e.demo.security.JwtTokenProvider       : 🔐 Generating JWT token for user: Alex
+2025-12-30T05:07:07.454Z  INFO 108889 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] c.e.demo.security.JwtTokenProvider       :    Current time: Tue Dec 30 05:07:07 UTC 2025
+2025-12-30T05:07:07.455Z  INFO 108889 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] c.e.demo.security.JwtTokenProvider       :    Expiry time: Wed Dec 31 05:07:07 UTC 2025
+2025-12-30T05:07:07.455Z  INFO 108889 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] c.e.demo.security.JwtTokenProvider       :    Expires in: 1440 minutes
+2025-12-30T05:07:07.461Z  INFO 108889 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] c.e.demo.security.JwtTokenProvider       :    Authorities added: [ROLE_Leader]
+2025-12-30T05:07:07.550Z  INFO 108889 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] c.e.demo.security.JwtTokenProvider       : ✅ Token generated successfully
+2025-12-30T05:07:07.551Z  INFO 108889 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] c.e.demo.security.JwtTokenProvider       :    Token length: 228
