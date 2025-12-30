@@ -1497,3 +1497,175 @@ Unconditional classes:
 
 
 
+2025-12-30T01:08:38.931Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 43 class path changes (0 additions, 43 deletions, 0 modifications)
+2025-12-30T01:08:39.038Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [Thread-10] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-12-30T01:08:39.121Z  WARN 81049 --- [SkillBasedVolunteerTaskAssignor] [Thread-10] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2025-12-30T01:08:39.123Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [Thread-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2025-12-30T01:08:39.124Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [Thread-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2025-12-30T01:08:41.622Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.example.demo.DemoApplication         : Starting DemoApplication using Java 17.0.17 with PID 81049 (/home/coder/Workspace/demo/target/classes started by coder in /home/coder/Workspace/demo)
+2025-12-30T01:08:41.623Z DEBUG 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.example.demo.DemoApplication         : Running with Spring Boot v3.2.0, Spring v6.1.1
+2025-12-30T01:08:41.623Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-12-30T01:08:44.228Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-30T01:08:44.230Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2025-12-30T01:08:44.837Z  WARN 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: java.lang.NullPointerException: Cannot read field "generatedClass" because "data" is null
+2025-12-30T01:08:45.025Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-12-30T01:08:45.029Z ERROR 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+java.lang.NullPointerException: Cannot read field "generatedClass" because "data" is null
+	at org.springframework.cglib.proxy.Enhancer.nextInstance(Enhancer.java:783) ~[spring-core-6.1.1.jar:6.1.1]
+	at org.springframework.cglib.core.AbstractClassGenerator.create(AbstractClassGenerator.java:321) ~[spring-core-6.1.1.jar:6.1.1]
+	at org.springframework.cglib.proxy.Enhancer.createHelper(Enhancer.java:562) ~[spring-core-6.1.1.jar:6.1.1]
+	at org.springframework.cglib.proxy.Enhancer.createClass(Enhancer.java:407) ~[spring-core-6.1.1.jar:6.1.1]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer.createClass(ConfigurationClassEnhancer.java:138) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer.enhance(ConfigurationClassEnhancer.java:109) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.enhanceConfigurationClasses(ConfigurationClassPostProcessor.java:533) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanFactory(ConfigurationClassPostProcessor.java:310) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:363) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:153) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:775) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:597) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.0.jar:3.2.0]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:753) ~[spring-boot-3.2.0.jar:3.2.0]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:455) ~[spring-boot-3.2.0.jar:3.2.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:323) ~[spring-boot-3.2.0.jar:3.2.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1342) ~[spring-boot-3.2.0.jar:3.2.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1331) ~[spring-boot-3.2.0.jar:3.2.0]
+	at com.example.demo.DemoApplication.main(DemoApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.2.0.jar:3.2.0]
+
+2025-12-30T01:08:55.825Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.example.demo.DemoApplication         : Starting DemoApplication using Java 17.0.17 with PID 81049 (/home/coder/Workspace/demo/target/classes started by coder in /home/coder/Workspace/demo)
+2025-12-30T01:08:55.826Z DEBUG 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.example.demo.DemoApplication         : Running with Spring Boot v3.2.0, Spring v6.1.1
+2025-12-30T01:08:55.826Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-12-30T01:09:00.326Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-30T01:09:00.626Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 298 ms. Found 5 JPA repository interfaces.
+2025-12-30T01:09:01.727Z  WARN 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: java.lang.NullPointerException: Cannot read field "generatedClass" because "data" is null
+2025-12-30T01:09:02.125Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-12-30T01:09:02.128Z ERROR 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+java.lang.NullPointerException: Cannot read field "generatedClass" because "data" is null
+	at org.springframework.cglib.proxy.Enhancer.nextInstance(Enhancer.java:783) ~[spring-core-6.1.1.jar:6.1.1]
+	at org.springframework.cglib.core.AbstractClassGenerator.create(AbstractClassGenerator.java:321) ~[spring-core-6.1.1.jar:6.1.1]
+	at org.springframework.cglib.proxy.Enhancer.createHelper(Enhancer.java:562) ~[spring-core-6.1.1.jar:6.1.1]
+	at org.springframework.cglib.proxy.Enhancer.createClass(Enhancer.java:407) ~[spring-core-6.1.1.jar:6.1.1]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer.createClass(ConfigurationClassEnhancer.java:138) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer.enhance(ConfigurationClassEnhancer.java:109) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.enhanceConfigurationClasses(ConfigurationClassPostProcessor.java:533) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanFactory(ConfigurationClassPostProcessor.java:310) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:363) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:153) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:775) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:597) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.0.jar:3.2.0]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:753) ~[spring-boot-3.2.0.jar:3.2.0]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:455) ~[spring-boot-3.2.0.jar:3.2.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:323) ~[spring-boot-3.2.0.jar:3.2.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1342) ~[spring-boot-3.2.0.jar:3.2.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1331) ~[spring-boot-3.2.0.jar:3.2.0]
+	at com.example.demo.DemoApplication.main(DemoApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.2.0.jar:3.2.0]
+
+2025-12-30T01:09:04.230Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.example.demo.DemoApplication         : Starting DemoApplication using Java 17.0.17 with PID 81049 (/home/coder/Workspace/demo/target/classes started by coder in /home/coder/Workspace/demo)
+2025-12-30T01:09:04.230Z DEBUG 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.example.demo.DemoApplication         : Running with Spring Boot v3.2.0, Spring v6.1.1
+2025-12-30T01:09:04.230Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-12-30T01:09:10.731Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-30T01:09:11.030Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 298 ms. Found 6 JPA repository interfaces.
+2025-12-30T01:09:17.523Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9001 (http)
+2025-12-30T01:09:17.526Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-30T01:09:17.526Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-12-30T01:09:17.726Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-12-30T01:09:17.727Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 13402 ms
+2025-12-30T01:09:19.933Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2025-12-30T01:09:20.025Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-5 - Added connection conn40: url=jdbc:h2:mem:testdb user=ROOT
+2025-12-30T01:09:20.026Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2025-12-30T01:09:20.026Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-12-30T01:09:20.637Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] c.e.demo.security.JwtTokenProvider       : 🔑 Initializing JwtTokenProvider...
+2025-12-30T01:09:20.638Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] c.e.demo.security.JwtTokenProvider       : 🔑 JWT Secret length: 70
+2025-12-30T01:09:20.639Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] c.e.demo.security.JwtTokenProvider       : 🔑 JWT Expiration (ms): 86400000
+2025-12-30T01:09:20.639Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] c.e.demo.security.JwtTokenProvider       : ✅ Using provided secret key (length: 70)
+2025-12-30T01:09:20.639Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] c.e.demo.security.JwtTokenProvider       : ✅ JwtTokenProvider initialized successfully
+2025-12-30T01:09:21.725Z DEBUG 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] c.e.d.security.JwtAuthenticationFilter   : Filter 'jwtAuthenticationFilter' configured for use
+2025-12-30T01:09:21.725Z DEBUG 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] c.example.demo.security.JwtTokenFilter   : Filter 'jwtTokenFilter' configured for use
+2025-12-30T01:09:22.733Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-30T01:09:22.821Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-12-30T01:09:22.825Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-30T01:09:22.827Z  WARN 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-12-30T01:09:24.927Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-30T01:09:25.029Z DEBUG 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : create table assignment_evaluation_records (id bigint generated by default as identity, assignment_id bigint not null, evaluated_at timestamp(6) not null, feedback varchar(255), rating integer not null, primary key (id))
+2025-12-30T01:09:25.031Z DEBUG 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : create table task_assignment_records (id bigint generated by default as identity, assigned_at timestamp(6) not null, completed_at timestamp(6), status varchar(255), task_id bigint not null, volunteer_id bigint not null, primary key (id))
+2025-12-30T01:09:25.033Z DEBUG 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : create table task_records (id bigint generated by default as identity, created_at timestamp(6) not null, priority varchar(255) not null, required_skill varchar(255) not null, required_skill_level varchar(255) not null, status varchar(255), task_code varchar(255) not null, task_name varchar(255) not null, updated_at timestamp(6), primary key (id))
+2025-12-30T01:09:25.034Z DEBUG 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : create table users (id bigint generated by default as identity, email varchar(255), password varchar(255) not null, role varchar(255), username varchar(255) not null, primary key (id))
+2025-12-30T01:09:25.036Z DEBUG 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : create table volunteer_profiles (id bigint generated by default as identity, availability_status varchar(255), created_at timestamp(6) not null, email varchar(255) not null, full_name varchar(255) not null, phone varchar(255) not null, updated_at timestamp(6), volunteer_id varchar(255) not null, primary key (id))
+2025-12-30T01:09:25.123Z DEBUG 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : create table volunteer_skill_records (id bigint generated by default as identity, certified boolean, created_at timestamp(6) not null, skill_level varchar(255) not null, skill_name varchar(255) not null, updated_at timestamp(6), volunteer_id bigint not null, primary key (id))
+2025-12-30T01:09:25.125Z DEBUG 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists task_records drop constraint if exists UK_gdl54rx67o6vk0aydtbjh2wyp
+2025-12-30T01:09:25.126Z DEBUG 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists task_records add constraint UK_gdl54rx67o6vk0aydtbjh2wyp unique (task_code)
+2025-12-30T01:09:25.126Z DEBUG 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists users drop constraint if exists UK_6dotkott2kjsp8vw4d0m25fb7
+2025-12-30T01:09:25.127Z DEBUG 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists users add constraint UK_6dotkott2kjsp8vw4d0m25fb7 unique (email)
+2025-12-30T01:09:25.127Z DEBUG 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists users drop constraint if exists UK_r43af9ap4edm43mmtq01oddj6
+2025-12-30T01:09:25.127Z DEBUG 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists users add constraint UK_r43af9ap4edm43mmtq01oddj6 unique (username)
+2025-12-30T01:09:25.128Z DEBUG 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists volunteer_profiles drop constraint if exists UK_ejk0h5xdl4ujp5t07mh7y9j93
+2025-12-30T01:09:25.129Z DEBUG 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists volunteer_profiles add constraint UK_ejk0h5xdl4ujp5t07mh7y9j93 unique (email)
+2025-12-30T01:09:25.129Z DEBUG 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists volunteer_profiles drop constraint if exists UK_mpbm6dsummhwp7em05vv0m25d
+2025-12-30T01:09:25.129Z DEBUG 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists volunteer_profiles add constraint UK_mpbm6dsummhwp7em05vv0m25d unique (phone)
+2025-12-30T01:09:25.130Z DEBUG 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists volunteer_profiles drop constraint if exists UK_87gyc4n3kbuxboy1bqtlpoq1x
+2025-12-30T01:09:25.130Z DEBUG 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists volunteer_profiles add constraint UK_87gyc4n3kbuxboy1bqtlpoq1x unique (volunteer_id)
+2025-12-30T01:09:25.131Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-30T01:09:44.130Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-12-30T01:09:46.331Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6186384, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@68414516, org.springframework.security.web.context.SecurityContextHolderFilter@1d035a73, org.springframework.security.web.header.HeaderWriterFilter@7ef15fa5, org.springframework.web.filter.CorsFilter@d616012, org.springframework.security.web.authentication.logout.LogoutFilter@47cddefb, com.example.demo.security.JwtAuthenticationFilter@7b5c9e61, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4195eef8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@15de3e33, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@32237d9d, org.springframework.security.web.session.SessionManagementFilter@5d42b4d3, org.springframework.security.web.access.ExceptionTranslationFilter@45de0a26, org.springframework.security.web.access.intercept.AuthorizationFilter@42208b5e]
+2025-12-30T01:09:58.933Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-12-30T01:09:59.922Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9001 (http) with context path ''
+2025-12-30T01:10:00.124Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.example.demo.DemoApplication         : Started DemoApplication in 56.391 seconds (process running for 798.183)
+2025-12-30T01:10:00.226Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-12-30T01:10:04.526Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 43 class path changes (0 additions, 43 deletions, 0 modifications)
+2025-12-30T01:10:04.628Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [Thread-15] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-12-30T01:10:04.724Z  WARN 81049 --- [SkillBasedVolunteerTaskAssignor] [Thread-15] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2025-12-30T01:10:04.725Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [Thread-15] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2025-12-30T01:10:04.727Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [Thread-15] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2025-12-30T01:10:35.525Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.example.demo.DemoApplication         : Starting DemoApplication using Java 17.0.17 with PID 81049 (/home/coder/Workspace/demo/target/classes started by coder in /home/coder/Workspace/demo)
+2025-12-30T01:10:35.525Z DEBUG 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.example.demo.DemoApplication         : Running with Spring Boot v3.2.0, Spring v6.1.1
+2025-12-30T01:10:35.526Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.example.demo.DemoApplication         : No active profile set, falling back to 1 default profile: "default"
+2025-12-30T01:10:39.530Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-12-30T01:10:39.821Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 290 ms. Found 6 JPA repository interfaces.
+2025-12-30T01:10:40.335Z  WARN 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: java.lang.NullPointerException: Cannot read field "generatedClass" because "data" is null
+2025-12-30T01:10:40.527Z  INFO 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-12-30T01:10:40.531Z ERROR 81049 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+java.lang.NullPointerException: Cannot read field "generatedClass" because "data" is null
+	at org.springframework.cglib.proxy.Enhancer.nextInstance(Enhancer.java:783) ~[spring-core-6.1.1.jar:6.1.1]
+	at org.springframework.cglib.core.AbstractClassGenerator.create(AbstractClassGenerator.java:321) ~[spring-core-6.1.1.jar:6.1.1]
+	at org.springframework.cglib.proxy.Enhancer.createHelper(Enhancer.java:562) ~[spring-core-6.1.1.jar:6.1.1]
+	at org.springframework.cglib.proxy.Enhancer.createClass(Enhancer.java:407) ~[spring-core-6.1.1.jar:6.1.1]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer.createClass(ConfigurationClassEnhancer.java:138) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer.enhance(ConfigurationClassEnhancer.java:109) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.enhanceConfigurationClasses(ConfigurationClassPostProcessor.java:533) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanFactory(ConfigurationClassPostProcessor.java:310) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:363) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:153) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:775) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:597) ~[spring-context-6.1.1.jar:6.1.1]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.0.jar:3.2.0]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:753) ~[spring-boot-3.2.0.jar:3.2.0]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:455) ~[spring-boot-3.2.0.jar:3.2.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:323) ~[spring-boot-3.2.0.jar:3.2.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1342) ~[spring-boot-3.2.0.jar:3.2.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1331) ~[spring-boot-3.2.0.jar:3.2.0]
+	at com.example.demo.DemoApplication.main(DemoApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.2.0.jar:3.2.0]
+
