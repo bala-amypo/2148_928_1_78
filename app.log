@@ -1676,3 +1676,403 @@ java.lang.NullPointerException: Cannot read field "generatedClass" because "data
 2025-12-30T03:45:16.353Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
 2025-12-30T03:45:22.958Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
 2025-12-30T03:45:23.348Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 314 ms. Found 6 JPA repository interfaces.
+2025-12-30T03:45:28.838Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9001 (http)
+2025-12-30T03:45:28.855Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-12-30T03:45:28.856Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-12-30T03:45:29.538Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-12-30T03:45:29.540Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 13184 ms
+2025-12-30T03:45:30.538Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-12-30T03:45:31.164Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:testdb user=ROOT
+2025-12-30T03:45:31.167Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-12-30T03:45:31.246Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-12-30T03:45:31.656Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] c.e.demo.security.JwtTokenProvider       : 🔑 Initializing JwtTokenProvider...
+2025-12-30T03:45:31.657Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] c.e.demo.security.JwtTokenProvider       : 🔑 JWT Secret length: 70
+2025-12-30T03:45:31.657Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] c.e.demo.security.JwtTokenProvider       : 🔑 JWT Expiration (ms): 86400000
+2025-12-30T03:45:31.661Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] c.e.demo.security.JwtTokenProvider       : ✅ Using provided secret key (length: 70)
+2025-12-30T03:45:31.661Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] c.e.demo.security.JwtTokenProvider       : ✅ JwtTokenProvider initialized successfully
+2025-12-30T03:45:32.726Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] c.e.d.security.JwtAuthenticationFilter   : Filter 'jwtAuthenticationFilter' configured for use
+2025-12-30T03:45:32.727Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] c.example.demo.security.JwtTokenFilter   : Filter 'jwtTokenFilter' configured for use
+2025-12-30T03:45:33.553Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-12-30T03:45:33.730Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2025-12-30T03:45:33.847Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-12-30T03:45:34.657Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-12-30T03:45:34.844Z  WARN 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-12-30T03:45:38.840Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-12-30T03:45:39.220Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : create table assignment_evaluation_records (id bigint generated by default as identity, assignment_id bigint not null, evaluated_at timestamp(6) not null, feedback varchar(255), rating integer not null, primary key (id))
+2025-12-30T03:45:39.333Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : create table task_assignment_records (id bigint generated by default as identity, assigned_at timestamp(6) not null, completed_at timestamp(6), status varchar(255), task_id bigint not null, volunteer_id bigint not null, primary key (id))
+2025-12-30T03:45:39.344Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : create table task_records (id bigint generated by default as identity, created_at timestamp(6) not null, priority varchar(255) not null, required_skill varchar(255) not null, required_skill_level varchar(255) not null, status varchar(255), task_code varchar(255) not null, task_name varchar(255) not null, updated_at timestamp(6), primary key (id))
+2025-12-30T03:45:39.432Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : create table users (id bigint generated by default as identity, email varchar(255), password varchar(255) not null, role varchar(255), username varchar(255) not null, primary key (id))
+2025-12-30T03:45:39.437Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : create table volunteer_profiles (id bigint generated by default as identity, availability_status varchar(255), created_at timestamp(6) not null, email varchar(255) not null, full_name varchar(255) not null, phone varchar(255) not null, updated_at timestamp(6), volunteer_id varchar(255) not null, primary key (id))
+2025-12-30T03:45:39.441Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : create table volunteer_skill_records (id bigint generated by default as identity, certified boolean, created_at timestamp(6) not null, skill_level varchar(255) not null, skill_name varchar(255) not null, updated_at timestamp(6), volunteer_id bigint not null, primary key (id))
+2025-12-30T03:45:39.445Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists task_records drop constraint if exists UK_gdl54rx67o6vk0aydtbjh2wyp
+2025-12-30T03:45:39.446Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists task_records add constraint UK_gdl54rx67o6vk0aydtbjh2wyp unique (task_code)
+2025-12-30T03:45:39.525Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists users drop constraint if exists UK_6dotkott2kjsp8vw4d0m25fb7
+2025-12-30T03:45:39.527Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists users add constraint UK_6dotkott2kjsp8vw4d0m25fb7 unique (email)
+2025-12-30T03:45:39.530Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists users drop constraint if exists UK_r43af9ap4edm43mmtq01oddj6
+2025-12-30T03:45:39.531Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists users add constraint UK_r43af9ap4edm43mmtq01oddj6 unique (username)
+2025-12-30T03:45:39.533Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists volunteer_profiles drop constraint if exists UK_ejk0h5xdl4ujp5t07mh7y9j93
+2025-12-30T03:45:39.534Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists volunteer_profiles add constraint UK_ejk0h5xdl4ujp5t07mh7y9j93 unique (email)
+2025-12-30T03:45:39.536Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists volunteer_profiles drop constraint if exists UK_mpbm6dsummhwp7em05vv0m25d
+2025-12-30T03:45:39.537Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists volunteer_profiles add constraint UK_mpbm6dsummhwp7em05vv0m25d unique (phone)
+2025-12-30T03:45:39.539Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists volunteer_profiles drop constraint if exists UK_87gyc4n3kbuxboy1bqtlpoq1x
+2025-12-30T03:45:39.541Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] org.hibernate.SQL                        : alter table if exists volunteer_profiles add constraint UK_87gyc4n3kbuxboy1bqtlpoq1x unique (volunteer_id)
+2025-12-30T03:45:39.629Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-12-30T03:45:47.846Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2025-12-30T03:45:48.338Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@60feb46b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1a2e7217, org.springframework.security.web.context.SecurityContextHolderFilter@1c6397a8, org.springframework.security.web.header.HeaderWriterFilter@6efd5fdb, org.springframework.web.filter.CorsFilter@724fbc95, org.springframework.security.web.authentication.logout.LogoutFilter@34ddd316, com.example.demo.security.JwtAuthenticationFilter@16f68d5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2df8a6e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@70ca4dd9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2b1c98bf, org.springframework.security.web.session.SessionManagementFilter@1cca3183, org.springframework.security.web.access.ExceptionTranslationFilter@29781cff, org.springframework.security.web.access.intercept.AuthorizationFilter@2ee42d00]
+2025-12-30T03:45:51.568Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-12-30T03:45:52.336Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9001 (http) with context path ''
+2025-12-30T03:45:52.430Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [restartedMain] com.example.demo.DemoApplication         : Started DemoApplication in 39.288 seconds (process running for 42.601)
+2025-12-30T03:45:59.928Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-12-30T03:45:59.929Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-12-30T03:45:59.936Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2025-12-30T03:45:59.964Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /
+2025-12-30T03:46:00.035Z  WARN 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] o.s.w.s.h.HandlerMappingIntrospector     : Cache miss for REQUEST dispatch to '/' (previous null). Performing CorsConfiguration lookup. This is logged once only at WARN level, and every time at TRACE.
+2025-12-30T03:46:00.055Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] c.e.d.security.JwtAuthenticationFilter   : ══════════════════════════════════════════════════════════
+2025-12-30T03:46:00.056Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] c.e.d.security.JwtAuthenticationFilter   : JWT FILTER START - GET /
+2025-12-30T03:46:00.057Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] c.e.d.security.JwtAuthenticationFilter   : Skipping JWT filter for public endpoint: /
+2025-12-30T03:46:00.123Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-30T03:46:00.130Z  WARN 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] o.s.w.s.h.HandlerMappingIntrospector     : Cache miss for REQUEST dispatch to '/' (previous null). Performing MatchableHandlerMapping lookup. This is logged once only at WARN level, and every time at TRACE.
+2025-12-30T03:46:00.231Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /
+2025-12-30T03:46:00.336Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /error
+2025-12-30T03:46:00.353Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /error
+2025-12-30T03:46:00.623Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-30T03:46:00.782Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /favicon.ico
+2025-12-30T03:46:00.787Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] c.e.d.security.JwtAuthenticationFilter   : ══════════════════════════════════════════════════════════
+2025-12-30T03:46:00.787Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] c.e.d.security.JwtAuthenticationFilter   : JWT FILTER START - GET /favicon.ico
+2025-12-30T03:46:00.788Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] c.e.d.security.JwtAuthenticationFilter   : Authorization Header: NULL
+2025-12-30T03:46:00.788Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] c.e.d.security.JwtAuthenticationFilter   : Token extracted: NO
+2025-12-30T03:46:00.788Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] c.e.d.security.JwtAuthenticationFilter   : No JWT token found in request
+2025-12-30T03:46:00.788Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] c.e.d.security.JwtAuthenticationFilter   : Request will proceed without authentication
+2025-12-30T03:46:00.788Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] c.e.d.security.JwtAuthenticationFilter   : JWT FILTER END - Proceeding with filter chain
+2025-12-30T03:46:00.788Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] c.e.d.security.JwtAuthenticationFilter   : ══════════════════════════════════════════════════════════
+2025-12-30T03:46:00.789Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-30T03:46:00.803Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] o.s.s.w.a.Http403ForbiddenEntryPoint     : Pre-authenticated entry point called. Rejecting access
+2025-12-30T03:46:00.806Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /error
+2025-12-30T03:46:00.836Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /error
+2025-12-30T03:46:01.140Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-30T03:46:06.301Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/index.html
+2025-12-30T03:46:06.303Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] c.e.d.security.JwtAuthenticationFilter   : ══════════════════════════════════════════════════════════
+2025-12-30T03:46:06.304Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] c.e.d.security.JwtAuthenticationFilter   : JWT FILTER START - GET /swagger-ui/index.html
+2025-12-30T03:46:06.304Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] c.e.d.security.JwtAuthenticationFilter   : Skipping JWT filter for public endpoint: /swagger-ui/index.html
+2025-12-30T03:46:06.304Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-30T03:46:06.307Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/index.html
+2025-12-30T03:46:06.404Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/swagger-ui.css
+2025-12-30T03:46:06.405Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/swagger-ui-bundle.js
+2025-12-30T03:46:06.405Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/index.css
+2025-12-30T03:46:06.407Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-7] c.e.d.security.JwtAuthenticationFilter   : ══════════════════════════════════════════════════════════
+2025-12-30T03:46:06.407Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-7] c.e.d.security.JwtAuthenticationFilter   : JWT FILTER START - GET /swagger-ui/swagger-ui-bundle.js
+2025-12-30T03:46:06.406Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-5] c.e.d.security.JwtAuthenticationFilter   : ══════════════════════════════════════════════════════════
+2025-12-30T03:46:06.407Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-7] c.e.d.security.JwtAuthenticationFilter   : Skipping JWT filter for public endpoint: /swagger-ui/swagger-ui-bundle.js
+2025-12-30T03:46:06.407Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-5] c.e.d.security.JwtAuthenticationFilter   : JWT FILTER START - GET /swagger-ui/swagger-ui.css
+2025-12-30T03:46:06.407Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-5] c.e.d.security.JwtAuthenticationFilter   : Skipping JWT filter for public endpoint: /swagger-ui/swagger-ui.css
+2025-12-30T03:46:06.407Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-30T03:46:06.407Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-6] c.e.d.security.JwtAuthenticationFilter   : ══════════════════════════════════════════════════════════
+2025-12-30T03:46:06.408Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-30T03:46:06.408Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-6] c.e.d.security.JwtAuthenticationFilter   : JWT FILTER START - GET /swagger-ui/index.css
+2025-12-30T03:46:06.408Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-6] c.e.d.security.JwtAuthenticationFilter   : Skipping JWT filter for public endpoint: /swagger-ui/index.css
+2025-12-30T03:46:06.408Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-30T03:46:06.410Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/swagger-ui-bundle.js
+2025-12-30T03:46:06.411Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/index.css
+2025-12-30T03:46:06.427Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/swagger-ui.css
+2025-12-30T03:46:06.526Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/swagger-ui-standalone-preset.js
+2025-12-30T03:46:06.529Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-8] c.e.d.security.JwtAuthenticationFilter   : ══════════════════════════════════════════════════════════
+2025-12-30T03:46:06.529Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-8] c.e.d.security.JwtAuthenticationFilter   : JWT FILTER START - GET /swagger-ui/swagger-ui-standalone-preset.js
+2025-12-30T03:46:06.529Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-8] c.e.d.security.JwtAuthenticationFilter   : Skipping JWT filter for public endpoint: /swagger-ui/swagger-ui-standalone-preset.js
+2025-12-30T03:46:06.530Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-30T03:46:06.533Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/swagger-ui-standalone-preset.js
+2025-12-30T03:46:06.625Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /swagger-ui/swagger-initializer.js
+2025-12-30T03:46:06.629Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-4] c.e.d.security.JwtAuthenticationFilter   : ══════════════════════════════════════════════════════════
+2025-12-30T03:46:06.629Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-4] c.e.d.security.JwtAuthenticationFilter   : JWT FILTER START - GET /swagger-ui/swagger-initializer.js
+2025-12-30T03:46:06.629Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-4] c.e.d.security.JwtAuthenticationFilter   : Skipping JWT filter for public endpoint: /swagger-ui/swagger-initializer.js
+2025-12-30T03:46:06.630Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-30T03:46:06.734Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /swagger-ui/swagger-initializer.js
+2025-12-30T03:46:07.684Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /v3/api-docs/swagger-config
+2025-12-30T03:46:07.685Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-10] c.e.d.security.JwtAuthenticationFilter   : ══════════════════════════════════════════════════════════
+2025-12-30T03:46:07.686Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-10] c.e.d.security.JwtAuthenticationFilter   : JWT FILTER START - GET /v3/api-docs/swagger-config
+2025-12-30T03:46:07.686Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-10] c.e.d.security.JwtAuthenticationFilter   : Skipping JWT filter for public endpoint: /v3/api-docs/swagger-config
+2025-12-30T03:46:07.686Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-30T03:46:07.688Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /v3/api-docs/swagger-config
+2025-12-30T03:46:07.755Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /v3/api-docs
+2025-12-30T03:46:07.756Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] c.e.d.security.JwtAuthenticationFilter   : ══════════════════════════════════════════════════════════
+2025-12-30T03:46:07.757Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] c.e.d.security.JwtAuthenticationFilter   : JWT FILTER START - GET /v3/api-docs
+2025-12-30T03:46:07.757Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] c.e.d.security.JwtAuthenticationFilter   : Skipping JWT filter for public endpoint: /v3/api-docs
+2025-12-30T03:46:07.757Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-30T03:46:07.760Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /v3/api-docs
+2025-12-30T03:46:10.643Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-1] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 2865 ms
+2025-12-30T03:47:00.618Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /api/auth/register
+2025-12-30T03:47:00.621Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] c.e.d.security.JwtAuthenticationFilter   : ══════════════════════════════════════════════════════════
+2025-12-30T03:47:00.621Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] c.e.d.security.JwtAuthenticationFilter   : JWT FILTER START - POST /api/auth/register
+2025-12-30T03:47:00.621Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] c.e.d.security.JwtAuthenticationFilter   : Skipping JWT filter for public endpoint: /api/auth/register
+2025-12-30T03:47:00.622Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-30T03:47:00.623Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /api/auth/register
+2025-12-30T03:47:01.166Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] org.hibernate.SQL                        : select u1_0.id from users u1_0 where u1_0.username=? fetch first ? rows only
+2025-12-30T03:47:01.742Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] org.hibernate.SQL                        : insert into users (email,password,role,username,id) values (?,?,?,?,default)
+2025-12-30T03:47:01.855Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] c.e.demo.security.JwtTokenProvider       : 🔐 Generating JWT token for user: john_doe
+2025-12-30T03:47:01.859Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] c.e.demo.security.JwtTokenProvider       :    Current time: Tue Dec 30 03:47:01 UTC 2025
+2025-12-30T03:47:01.859Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] c.e.demo.security.JwtTokenProvider       :    Expiry time: Wed Dec 31 03:47:01 UTC 2025
+2025-12-30T03:47:01.860Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] c.e.demo.security.JwtTokenProvider       :    Expires in: 1440 minutes
+2025-12-30T03:47:01.925Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] c.e.demo.security.JwtTokenProvider       :    Authorities added: [ROLE_user]
+2025-12-30T03:47:01.950Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] c.e.demo.security.JwtTokenProvider       : ✅ Token generated successfully
+2025-12-30T03:47:01.950Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-2] c.e.demo.security.JwtTokenProvider       :    Token length: 231
+2025-12-30T03:47:43.576Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] o.s.security.web.FilterChainProxy        : Securing POST /api/auth/login
+2025-12-30T03:47:43.578Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] c.e.d.security.JwtAuthenticationFilter   : ══════════════════════════════════════════════════════════
+2025-12-30T03:47:43.578Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] c.e.d.security.JwtAuthenticationFilter   : JWT FILTER START - POST /api/auth/login
+2025-12-30T03:47:43.578Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] c.e.d.security.JwtAuthenticationFilter   : Skipping JWT filter for public endpoint: /api/auth/login
+2025-12-30T03:47:43.578Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-30T03:47:43.580Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] o.s.security.web.FilterChainProxy        : Secured POST /api/auth/login
+2025-12-30T03:47:43.580Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] c.e.demo.security.JwtTokenProvider       : 🔐 Validating JWT token...
+2025-12-30T03:47:43.603Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] c.e.demo.security.JwtTokenProvider       : ✅ Token validation successful
+2025-12-30T03:47:43.606Z ERROR 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] c.example.demo.security.JwtTokenFilter   : Cannot set user authentication
+
+org.springframework.security.core.userdetails.UsernameNotFoundException: User not found with email: john_doe
+	at com.example.demo.security.CustomUserDetailsService.loadUserByUsername(CustomUserDetailsService.java:35) ~[classes/:na]
+	at com.example.demo.security.JwtTokenFilter.doFilterInternal(JwtTokenFilter.java:39) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$FilterObservation$SimpleFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:479) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:340) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator.lambda$wrapSecured$0(ObservationFilterChainDecorator.java:82) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:128) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at com.example.demo.security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:44) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$0(ObservationFilterChainDecorator.java:323) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:224) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:109) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:340) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-12-30T03:47:44.135Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] o.s.s.a.dao.DaoAuthenticationProvider    : Failed to find user 'john_doe'
+2025-12-30T03:47:44.139Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] o.s.s.w.a.Http403ForbiddenEntryPoint     : Pre-authenticated entry point called. Rejecting access
+2025-12-30T03:47:44.142Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] o.s.security.web.FilterChainProxy        : Securing POST /error
+2025-12-30T03:47:44.222Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] o.s.security.web.FilterChainProxy        : Secured POST /error
+2025-12-30T03:47:44.229Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-30T03:48:13.861Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-6] o.s.security.web.FilterChainProxy        : Securing POST /api/auth/login
+2025-12-30T03:48:13.863Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-6] c.e.d.security.JwtAuthenticationFilter   : ══════════════════════════════════════════════════════════
+2025-12-30T03:48:13.863Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-6] c.e.d.security.JwtAuthenticationFilter   : JWT FILTER START - POST /api/auth/login
+2025-12-30T03:48:13.864Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-6] c.e.d.security.JwtAuthenticationFilter   : Skipping JWT filter for public endpoint: /api/auth/login
+2025-12-30T03:48:13.864Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2025-12-30T03:48:13.865Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-6] o.s.security.web.FilterChainProxy        : Secured POST /api/auth/login
+2025-12-30T03:48:13.865Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-6] c.e.demo.security.JwtTokenProvider       : 🔐 Validating JWT token...
+2025-12-30T03:48:13.868Z  INFO 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-6] c.e.demo.security.JwtTokenProvider       : ✅ Token validation successful
+2025-12-30T03:48:13.870Z ERROR 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-6] c.example.demo.security.JwtTokenFilter   : Cannot set user authentication
+
+org.springframework.security.core.userdetails.UsernameNotFoundException: User not found with email: john_doe
+	at com.example.demo.security.CustomUserDetailsService.loadUserByUsername(CustomUserDetailsService.java:35) ~[classes/:na]
+	at com.example.demo.security.JwtTokenFilter.doFilterInternal(JwtTokenFilter.java:39) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$FilterObservation$SimpleFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:479) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:340) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator.lambda$wrapSecured$0(ObservationFilterChainDecorator.java:82) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:128) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at com.example.demo.security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:44) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:240) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$0(ObservationFilterChainDecorator.java:323) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:224) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:137) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.0.jar:6.2.0]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:109) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.1.jar:6.1.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:340) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-10.1.16.jar:10.1.16]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-12-30T03:48:14.251Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-6] o.s.s.a.dao.DaoAuthenticationProvider    : Failed to find user 'john_doe'
+2025-12-30T03:48:14.253Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-6] o.s.s.w.a.Http403ForbiddenEntryPoint     : Pre-authenticated entry point called. Rejecting access
+2025-12-30T03:48:14.254Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-6] o.s.security.web.FilterChainProxy        : Securing POST /error
+2025-12-30T03:48:14.324Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-6] o.s.security.web.FilterChainProxy        : Secured POST /error
+2025-12-30T03:48:14.332Z DEBUG 99051 --- [SkillBasedVolunteerTaskAssignor] [http-nio-9001-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
